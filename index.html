@@ -652,6 +652,9 @@ function tEv(){
   <label class="w2">Место<input name="place" value="${e?esc(e.place):'Ледовая арена (адрес условный)'}" required></label>
   <label class="w2">Соперник (для игры)<input name="opp" value="${e?esc(e.opp||''):''}" placeholder="Название команды"></label>
   <label class="w2">Турнир (для игры)<select name="tid"><option value="">— обычная игра —</option>${D.tours.map(t=>`<option value="${t.id}"${e&&e.tid===t.id?' selected':''}>${esc(t.name)}</option>`).join('')}</select></label>
+  ${e?'':`<label class="w2 sw" style="gap:8px;align-self:center"><input type="checkbox" name="rep" id="evRep"> Повторять каждую неделю в этот же день</label>
+  <label>До какой даты<input name="until" type="date" value="${plusMonth(plusMonth(plusMonth(TODAY)))}"></label>
+  <p class="note w4" id="evRepHint" style="margin:0">Например: дата — ближайший вторник, время 20:30, галочка «Повторять» — и сайт проставит все вторники до выбранной даты. Уже существующие тренировки в тот же день и время не задублируются.</p>`}
   <div class="row w4"><button class="btn" type="submit">${e?'Сохранить':'Добавить'}</button>${e?'<button class="btn sec sm" type="button" data-act="evCancel">Отмена</button>':''}</div></form></div>
   <div class="card" style="margin-top:16px"><h3>Все события</h3><div class="tw" style="margin-top:12px"><table><tr><th>Дата</th><th>Событие</th><th>Для кого</th><th>Время</th><th>Счёт</th><th></th></tr>
   ${sorted().reverse().map(x=>`<tr><td>${fdate(x.date)}, ${fdow(x.date)}</td><td>${evPill(x)} ${x.type==='game'?esc(x.opp):''}</td><td>${sqBadge(sqOf(x))}</td><td>${esc(x.time)}</td><td>${esc(x.score||'')}</td><td><button class="btn sec sm" data-act="evEdit" data-id="${x.id}">Изменить</button> <button class="btn del sm" data-act="evDel" data-id="${x.id}">Удалить</button></td></tr>`).join('')}</table></div></div>`;
@@ -1116,8 +1119,15 @@ document.addEventListener('submit',ev=>{
   else if(f.id==='evForm'){const e={type:v.type,squad:v.squad,date:v.date,time:v.time,place:v.place.trim(),opp:v.opp.trim(),score:v.score.trim()};
     if(e.type==='game'&&!e.opp){alert('Укажите соперника');return}
     e.tid=e.type==='game'&&v.tid?v.tid:'';
-    if(evEdit)Object.assign(D.events.find(x=>x.id===evEdit),e);else D.events.push({id:uid(),...e});
-    evEdit=null;save();toast('Событие сохранено');render()}
+    if(evEdit){Object.assign(D.events.find(x=>x.id===evEdit),e);evEdit=null;save();toast('Событие сохранено');render();return}
+    if(v.rep){   // серия: тот же день недели каждую неделю до даты «до»
+      if(!v.until||v.until<e.date){alert('Укажите дату «до», не раньше первой даты');return}
+      let d=e.date,n=0,skip=0;
+      for(let i=0;i<60&&d<=v.until;i++){
+        if(D.events.some(x=>x.type===e.type&&x.date===d&&x.time===e.time&&sqOf(x)===e.squad))skip++;else{D.events.push({id:uid(),...e,date:d});n++}
+        const t=dobj(d);t.setDate(t.getDate()+7);d=iso(t)}
+      save();toast(`Добавлено: ${n} — по ${['воскресеньям','понедельникам','вторникам','средам','четвергам','пятницам','субботам'][dobj(e.date).getDay()]} в ${e.time}`+(skip?`, уже было: ${skip}`:''));render();return}
+    D.events.push({id:uid(),...e});save();toast('Событие сохранено');render()}
   else if(f.id==='coForm'){D.coaches.push({id:uid(),last:v.last.trim(),first:v.first.trim(),mid:v.mid.trim(),role:v.role.trim(),squad:v.squad,phone:v.phone.trim(),about:v.about.trim()});save();toast('Тренер добавлен');render()}
   else if(f.id==='plForm'){const d={last:v.last.trim(),first:v.first.trim(),mid:v.mid.trim(),num:v.num===''?'':+v.num,pos:v.pos,type:v.type,squad:v.squad,phone:v.phone.trim(),
       birth:v.birth,height:v.height?+v.height:'',weight:v.weight?+v.weight:'',cap:v.cap||'',gear:!!v.gear};
