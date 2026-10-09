@@ -1,0 +1,1133 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ХК «Спарта» — любительская хоккейная команда</title>
+<meta name="description" content="Любительская хоккейная команда «Спарта»: календарь игр и тренировок, состав, личный кабинет игрока.">
+<style>
+/* ── цвета команды: заменить на фирменные ── */
+:root{--bg:#0a0e16;--card:#131a26;--card2:#182131;--ink:#eef2f8;--mut:#93a0b4;--ac:#e11d48;--ac2:#38bdf8;--line:#223047;--ok:#22c55e;--bad:#fb7185;--tg:#229ED9}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;min-height:100vh}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+a{color:var(--ac2)}
+h1{font-size:54px;line-height:1.05;letter-spacing:-1.5px;font-weight:800}
+h2{font-size:30px;font-weight:800;letter-spacing:-.5px;margin-bottom:22px}
+h3{font-size:18px;font-weight:800;margin-bottom:6px}
+p{color:var(--mut)}
+.g{background:linear-gradient(90deg,var(--ac),#fb923c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{display:inline-block;border:1px solid var(--line);background:#ffffff08;color:var(--ac2);font-size:12px;font-weight:700;letter-spacing:1px;padding:7px 14px;border-radius:999px;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ac);color:#fff;font:inherit;font-weight:700;font-size:16px;padding:13px 24px;border-radius:12px;border:0;cursor:pointer;text-decoration:none;box-shadow:0 10px 30px #e11d4840}
+.btn.sec{background:var(--card2);border:1px solid var(--line);box-shadow:none;color:var(--ink)}
+.btn.sm{padding:8px 14px;font-size:14px;border-radius:10px}
+.btn.tg{background:var(--tg);box-shadow:0 10px 30px #229ed940}
+.btn.del{background:transparent;border:1px solid #fb718555;color:var(--bad);box-shadow:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;min-width:0}
+.mut{color:var(--mut)}.ok{color:var(--ok)}.bad{color:var(--bad)}
+.sec-pad{padding-top:64px;padding-bottom:64px}
+table.fit td{white-space:normal}table.fit td:first-child,table.fit td:last-child{white-space:nowrap}
+
+/* шапка */
+header.top{position:sticky;top:0;z-index:30;background:#0a0e16e6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:800;white-space:nowrap}
+.brand svg{width:34px;height:38px;flex:none}
+nav.links{display:flex;gap:4px;margin-left:auto}
+nav.links a{color:var(--mut);text-decoration:none;font-size:15px;font-weight:600;padding:8px 12px;border-radius:10px}
+nav.links a.on,nav.links a:hover{color:var(--ink);background:var(--card2)}
+.who{display:flex;align-items:center;gap:8px;font-size:14px;white-space:nowrap}
+.mnav{display:none}
+
+/* главная */
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding:60px 0 40px}
+.hero .lead{font-size:19px;margin-top:18px;max-width:560px}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.next{background:linear-gradient(160deg,#182131,#1d1420);border:1px solid #e11d4855}
+.next .when{font-size:28px;font-weight:800;margin:6px 0}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+.pill.tr{background:#38bdf822;color:var(--ac2)}.pill.gm{background:#e11d4826;color:#fb7185}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.price{font-size:30px;font-weight:800;margin:6px 0 2px}
+.sponsor{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center}
+.ph{border:2px dashed #3a4a63;border-radius:16px;display:grid;place-items:center;text-align:center;color:var(--mut);font-size:14px;padding:14px;aspect-ratio:16/10}
+.ev{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer}.ev:last-child{border:0}
+.ev .d{flex:none;width:58px;text-align:center;background:var(--card2);border-radius:12px;padding:6px 0}.ev .d b{display:block;font-size:22px;line-height:1.1}.ev .d small{font-size:12px;color:var(--mut)}
+.ev .t{min-width:0}.ev .t b{display:block}.ev .t span{font-size:14px;color:var(--mut)}
+
+/* календарь */
+.calhead{display:flex;align-items:center;gap:12px;margin-bottom:16px}.calhead h2{margin:0;flex:1;text-transform:capitalize}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal .dow{font-size:12px;color:var(--mut);text-align:center;font-weight:700;padding:4px 0}
+.cal .c{min-height:96px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px;min-width:0}
+.cal .c.out{opacity:.25}.cal .c.today{border-color:var(--ac2)}
+.cal .c .n{font-size:13px;font-weight:700;color:var(--mut)}
+.cal .e{display:block;width:100%;text-align:left;font:inherit;font-size:12px;font-weight:700;border:0;border-radius:8px;padding:4px 6px;margin-top:4px;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cal .e.tr{background:#38bdf822;color:var(--ac2)}.cal .e.gm{background:#e11d4830;color:#fda4af}
+.legend{display:flex;gap:16px;font-size:14px;color:var(--mut);margin:14px 0 30px}
+
+/* состав */
+.pl{display:flex;gap:14px;align-items:center}
+.num{flex:none;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--ac),#7f1d1d);display:grid;place-items:center;font-weight:800;font-size:20px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.stats small{display:block;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}.stats b{font-size:15px;white-space:nowrap}
+.num.n2{background:linear-gradient(135deg,#6366f1,#312e81)}
+
+/* кабинет и админка */
+.big{font-size:44px;font-weight:800;line-height:1.1}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{font:inherit;font-size:14px;font-weight:700;color:var(--mut);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 14px;cursor:pointer}
+.tabs button.on{color:#fff;background:var(--ac);border-color:var(--ac)}
+.tw{overflow-x:auto;min-width:0;border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.05em;background:var(--card2)}
+tr:last-child td{border-bottom:0}td.r,th.r{text-align:right}
+.form{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:end}
+.form label{font-size:13px;font-weight:700;color:var(--mut);display:block}
+.form input,.form select,.form textarea{display:block;width:100%;margin-top:5px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 11px;font:inherit;font-size:15px}
+.form .w2{grid-column:span 2}.form .w4{grid-column:1/-1}
+.chk{display:flex;align-items:center;gap:10px;padding:11px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+.chk:last-child{border:0}.chk input{width:18px;height:18px;accent-color:var(--ac)}
+.badge{font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--card2);color:var(--mut);border:1px solid var(--line)}
+.badge.sub{color:var(--ac2);border-color:#38bdf855}.badge.rent{color:#fbbf24;border-color:#fbbf2455}
+.badge.role-G{color:#fbbf24;border-color:#fbbf2466}.badge.role-F{color:#fda4af;border-color:#fb718566}.badge.role-D{color:#7dd3fc;border-color:#38bdf866}
+.badge.sq1{color:#fda4af;border-color:#e11d4866}.badge.sq2{color:#a5b4fc;border-color:#818cf866}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}.chips button{font:inherit;font-size:14px;font-weight:700;color:var(--mut);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}.chips button.on{color:var(--ink);border-color:var(--ac2);background:#38bdf81a}
+.rsvp{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.rsvp button{font:inherit;font-size:13px;font-weight:700;color:var(--mut);background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.rsvp .r-yes.on{background:#22c55e26;color:var(--ok);border-color:#22c55e88}.rsvp .r-maybe.on{background:#fbbf2422;color:#fbbf24;border-color:#fbbf2488}.rsvp .r-no.on{background:#fb718522;color:var(--bad);border-color:#fb718588}
+.nk{display:inline-block;font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap}.nk.ok{background:#22c55e22;color:var(--ok)}.nk.bad{background:#fb718522;color:var(--bad)}.nk.warn{background:#fbbf2422;color:#fbbf24}.nit{padding:10px 0;border-bottom:1px solid var(--line)}.nit:last-child{border:0}.pre{white-space:pre-wrap;overflow-wrap:anywhere}.chk.on{background:#38bdf81a}
+.cap{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 4px;border-radius:6px;background:#fbbf24;color:#111;font-size:12px;font-weight:900;vertical-align:2px;margin-left:4px}
+.mchip{display:inline-block;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card2);color:var(--mut);font-size:13px;font-weight:700;cursor:pointer;user-select:none}.mchip.cur{border-style:dashed}.mchip.on{border-color:var(--ac2);background:#38bdf826;color:var(--ink)}.mchip.paid{opacity:.45;cursor:default;color:var(--ok)}.mchip input{display:none!important}.form label.mchip{display:inline-block;margin:0;font-size:13px}
+.place{display:inline-block;margin-top:6px;font-size:13px;font-weight:700;color:var(--ac2)}
+.mk{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-size:12px;font-weight:800;margin-right:6px}.mk.yes{background:#22c55e26;color:var(--ok)}.mk.maybe{background:#fbbf2422;color:#fbbf24}.mk.no{background:#fb718522;color:var(--bad)}.mk.none{background:var(--card2);color:var(--mut)}
+.lines{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.line h4{font-size:14px;margin-bottom:8px;color:var(--mut)}
+.slot{display:grid;grid-template-columns:38px 1fr;gap:8px;align-items:center;margin-bottom:6px}.slot b{font-size:12px;color:var(--mut)}
+.slot select,.tsel{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px;font:inherit;font-size:14px}
+.grp{font-size:13px;font-weight:800;color:var(--mut);text-transform:uppercase;letter-spacing:.05em;padding:10px 12px;background:var(--card2);border-bottom:1px solid var(--line)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.note{font-size:13px;color:var(--mut);margin-top:10px}
+.sw{display:flex;align-items:center;gap:10px;font-size:15px;cursor:pointer}.sw input{width:18px;height:18px;accent-color:var(--ac)}
+.form label.sw{display:flex;font-weight:600;color:var(--ink)}.form .sw input{display:inline-block;width:18px;flex:none;margin:0;padding:0}
+
+/* модалка, тост, демо */
+.modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+.modal.on{display:flex}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;max-width:460px;width:100%;max-height:90vh;overflow:auto;position:relative}
+.modal .x{position:absolute;right:14px;top:10px;background:none;border:0;color:var(--mut);font-size:26px;cursor:pointer}
+.pick{display:block;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin-top:8px;cursor:pointer}
+.pick:hover{border-color:var(--ac2)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:var(--ok);color:#06210f;font-weight:800;padding:12px 20px;border-radius:12px;z-index:60;transition:transform .25s}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.demo{position:fixed;left:14px;bottom:14px;z-index:40;background:#fbbf24;color:#2a1c00;font-size:12px;font-weight:800;padding:7px 12px;border-radius:999px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:#6b7891;font-size:13px;text-align:center;margin-top:40px}
+
+@media(max-width:900px){nav.links{display:none}.mnav{display:flex;gap:4px;overflow-x:auto;padding:8px 20px;border-top:1px solid var(--line)}.mnav a{color:var(--mut);text-decoration:none;font-size:14px;font-weight:600;padding:7px 12px;border-radius:10px;white-space:nowrap}.mnav a.on{color:var(--ink);background:var(--card2)}.who{margin-left:auto}}
+@media(max-width:760px){
+ h1{font-size:36px}h2{font-size:24px}.sec-pad{padding-top:44px;padding-bottom:44px}
+ .card{padding:18px}th,td{padding:10px 9px}.kpis{gap:12px}.grid3>*{grid-column:auto!important}.lines{grid-template-columns:1fr}
+ .hero,.grid3,.grid4,.sponsor,.kpis{grid-template-columns:1fr}.hero{padding:36px 0 20px;gap:24px}
+ .form{grid-template-columns:1fr 1fr}.form .w2{grid-column:1/-1}
+ .cal{gap:3px}.cal .c{min-height:58px;padding:4px;border-radius:8px}.cal .e{font-size:0;height:7px;padding:0;margin-top:3px}
+ .big{font-size:36px}.who .nm{display:none}footer{padding-bottom:64px}
+}
+</style></head><body>
+
+<header class="top"><div class="wrap">
+<a class="brand" href="#home"><svg viewBox="0 0 34 38" aria-hidden="true"><path d="M17 1 32 6v12c0 9-6.5 15.5-15 19C8.5 33.5 2 27 2 18V6z" fill="#e11d48"/><path d="M17 5 28 9v9c0 7-4.8 12-11 15C10.8 30 6 25 6 18V9z" fill="#0a0e16"/><text x="17" y="25" text-anchor="middle" font-size="15" font-weight="800" fill="#fff" font-family="Arial">С</text></svg>ХК «Спарта»</a>
+<nav class="links" id="nav"></nav>
+<div class="who" id="who"></div>
+</div><nav class="mnav" id="mnav"></nav></header>
+
+<main id="app"></main>
+
+<footer><div class="wrap">
+<p>ХК «Спарта» · любительская хоккейная команда · &lt;город&gt;</p>
+<p style="margin-top:6px">Демо-концепция: данные условные и хранятся только в Вашем браузере. Логотип, цвета и спонсор — заглушки.</p>
+</div></footer>
+
+<div class="modal" id="modal"><div class="box"><button class="x" data-act="close" aria-label="Закрыть">×</button><div id="mbody"></div></div></div>
+<div class="toast" id="toast"></div>
+<div class="demo">✦ Демо-концепция</div>
+
+<script>
+/* ═══ данные ═══ */
+const KEY='sparta-demo-v9', UKEY='sparta-demo-user';
+const TYPES={single:'Разовый',sub:'Абонемент'};
+const POS={F:'Нападающий',D:'Защитник',G:'Вратарь'};
+const POS_PL={F:'Нападающие',D:'Защитники',G:'Вратари'};
+const SQ={all:'Оба состава','1':'1-й состав','2':'2-й состав'};const MONTHS=['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+const MONTHS_G=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const DOW=['пн','вт','ср','чт','пт','сб','вс'];
+
+const pad=n=>String(n).padStart(2,'0');
+const iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const TODAY=iso(new Date()), CUR=TODAY.slice(0,7);
+const money=n=>(n<0?'−':'')+Math.abs(n).toLocaleString('ru-RU')+' ₽';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dobj=s=>new Date(s+'T00:00');
+const fdate=s=>{const d=dobj(s);return d.getDate()+' '+MONTHS_G[d.getMonth()]};
+const fdow=s=>DOW[(dobj(s).getDay()+6)%7];
+const age=b=>{if(!b)return null;const d=dobj(b),t=dobj(TODAY);let a=t.getFullYear()-d.getFullYear();if(t.getMonth()<d.getMonth()||(t.getMonth()===d.getMonth()&&t.getDate()<d.getDate()))a--;return a};
+const yrs=n=>{const a=n%10,b=n%100;return n+' '+(a===1&&b!==11?'год':a>=2&&a<=4&&(b<10||b>=20)?'года':'лет')};
+const fbirth=b=>b?fdate(b)+' '+b.slice(0,4):'';
+const mname=m=>MONTHS[+m.slice(5)-1]+' '+m.slice(0,4);
+const uid=()=>Math.random().toString(36).slice(2,9);
+const plusMonth=s=>{const d=dobj(s),day=d.getDate();d.setMonth(d.getMonth()+1);if(d.getDate()!==day)d.setDate(0);return iso(d)};  // 31.01 → 28.02
+const minusDay=s=>{const d=dobj(s);d.setDate(d.getDate()-1);return iso(d)};
+const addM=(m,k)=>{const d=new Date(+m.slice(0,4),+m.slice(5)-1+k,1);return d.getFullYear()+'-'+pad(d.getMonth()+1)};
+
+function seed(){
+  const base=new Date(); base.setDate(1); base.setMonth(base.getMonth()-1);   // с начала прошлого месяца
+  const end=new Date(base); end.setMonth(end.getMonth()+3);
+  const players=[
+    ['Смирнов','Алексей',17,'F','sub'],['Кузнецов','Дмитрий',9,'F','sub'],['Попов','Сергей',44,'D','single'],
+    ['Васильев','Андрей',31,'G','sub'],['Новиков','Илья',88,'F','rent'],['Фёдоров','Максим',5,'D','single'],
+    ['Морозов','Павел',21,'F','sub'],['Волков','Артём',12,'D','single'],['Алексеев','Роман',71,'F','rent'],
+    ['Лебедев','Игорь',3,'D','sub'],['Семёнов','Никита',27,'F','single'],['Егоров','Денис',1,'G','single']
+  ].map((p,i)=>({id:'p'+(i+1),last:p[0],first:p[1],mid:'',num:p[2],pos:p[3],type:p[4],squad:i<7?'1':'2',phone:'+7 900 000-00-'+pad(i+1),
+    birth:(1978+(i*3)%22)+'-'+pad(1+(i*5)%12)+'-'+pad(3+(i*7)%25),height:172+(i*7)%20,weight:74+(i*9)%26}));
+  const events=[];
+  for(let d=new Date(base);d<end;d.setDate(d.getDate()+1)){
+    const w=d.getDay();
+    if(w===2||w===4)events.push({id:uid(),type:'training',squad:'all',date:iso(d),time:'21:15',place:'Ледовая арена (адрес условный)'});
+  }
+  const opp=['Северные волки','Металлург-Л','Айсберг','Тигры','Ледокол'];let k=0;
+  for(let d=new Date(base);d<end;d.setDate(d.getDate()+1)){
+    if(d.getDay()===6&&d.getDate()%14<7){const ds=iso(d),past=ds<TODAY;
+      events.push({id:uid(),type:'game',squad:k%2?'2':'1',date:ds,time:'18:00',place:'Ледовая арена (адрес условный)',opp:opp[k%opp.length],score:past?['4:2','3:5','6:6','2:1'][k%4]:''});k++}
+  }
+  const att={};
+  events.forEach((e,ei)=>{ if(e.date>=TODAY)return;
+    att[e.id]=players.filter((p,pi)=>(e.squad==='all'||e.squad===p.squad)&&((pi*7+ei*3)%10)<(p.type==='sub'?8:5)).map(p=>p.id)});
+  const payments=[];const m0=iso(base).slice(0,7);
+  players.forEach((p,i)=>{
+    if(p.type==='sub'){const day=pad([1,2,1,5][i%4]), d1=m0+'-'+day, d2=plusMonth(d1);
+      payments.push({id:uid(),pid:p.id,date:d1,amount:6000,kind:'sub',note:''});
+      if(i%3!==1&&d2<=TODAY)payments.push({id:uid(),pid:p.id,date:d2,amount:6000,kind:'sub',note:''})}
+    else payments.push({id:uid(),pid:p.id,date:m0+'-20',amount:[3000,5000,4000,6000][i%4],kind:'single',note:''});
+  });
+  const nextTr=events.find(e=>e.type==='training'&&e.date>=TODAY);
+  const requests=[
+    {id:uid(),date:TODAY,name:'Николаев Кирилл',phone:'+7 900 111-22-33',age:'34',level:'skate',gear:true,ev:nextTr?nextTr.id:'',note:'Катаюсь на коньках, в хоккей не играл',status:'new'},
+    {id:uid(),date:TODAY,name:'Орлов Глеб',phone:'+7 900 444-55-66',age:'28',level:'played',gear:false,ev:'',note:'Играл в юности, своя форма есть',status:'called'}];
+  const coaches=[{id:'c1',last:'Петренко',first:'Виктор',mid:'Сергеевич',role:'Главный тренер',squad:'all',phone:'+7 900 000-00-50',about:'Пара слов о тренере: опыт, где играл, чему учит. Текст условный.'}];
+  const rsvp={};
+  const fut=events.filter(e=>e.date>=TODAY).sort((a,b)=>a.date.localeCompare(b.date));
+  [...fut.filter(e=>e.type==='training').slice(0,4),...fut.filter(e=>e.type==='game').slice(0,3)].forEach((e,ei)=>{
+    rsvp[e.id]={};players.forEach((p,pi)=>{if(!(e.squad==='all'||e.squad===p.squad))return;
+      const r=(pi*5+ei*3)%10;if(r<6)rsvp[e.id][p.id]='yes';else if(r<7)rsvp[e.id][p.id]='maybe';else if(r<8)rsvp[e.id][p.id]='no'})});
+  return {settings:{single:1000,sub:6000,subLimit:8,rent:500,burn:true},players,events,att,payments,requests,coaches,rsvp,lineup:{}};
+}
+function load(){try{const s=localStorage.getItem(KEY);if(s)return JSON.parse(s)}catch(e){}return seed()}
+let D=load();
+if(D.settings.grace==null)D.settings.grace=31;   // оплатил с опозданием до N дней — месяц встык к предыдущему
+if(!D.capSeed){D.capSeed=1;if(!D.players.some(p=>p.cap)){if(D.players[0])D.players[0].cap='C';if(D.players[1])D.players[1].cap='A'}}   // демо: капитан и ассистентD.requests=D.requests||[];D.coaches=D.coaches||[];D.rsvp=D.rsvp||{};D.lineup=D.lineup||{};
+/* ── сбор на событие и расстановка ── */
+const RSVP={yes:'Буду',maybe:'Под вопросом',no:'Не буду'};
+const RSVP_IC={yes:'✓',maybe:'?',no:'✗'};
+const LINES=[1,2,3,4], LPOS=[['LW','ЛН','левый нападающий'],['C','ЦН','центр'],['RW','ПН','правый нападающий'],['LD','ЛЗ','левый защитник'],['RD','ПЗ','правый защитник']];
+const TEAMS={A:'Белые',B:'Тёмные'};
+const rsvpOf=(eid,pid)=>(D.rsvp[eid]||{})[pid]||'';
+const gameOk=p=>!!p&&(p.type==='sub'||!!paidMonths(p)[CUR]);   // абонемент — по типу или оплаченный текущий месяц   // на игры — только абонемент
+const invited=e=>D.players.filter(p=>forSquad(e,p.squad||'1')&&(e.type!=='game'||gameOk(p)&&tourOk(e,p.id)));
+// в составе на игру и в командах на тренировку — только нажавшие «Буду»
+const gameSlots=e=>Object.fromEntries(Object.entries((D.lineup[e.id]||{}).slots||{}).filter(([k,v])=>rsvpOf(e.id,v)==='yes'&&gameOk(player(v))&&tourOk(e,v)));
+const trTeams=e=>Object.fromEntries(Object.entries((D.lineup[e.id]||{}).teams||{}).filter(([k,v])=>rsvpOf(e.id,k)==='yes'));
+function myPlace(e,pid){const L=D.lineup[e.id];if(!L||!L.pub)return '';
+  if(e.type==='game'){if(rsvpOf(e.id,pid)!=='yes')return '';for(const[k,v]of Object.entries(gameSlots(e)))if(v===pid){
+    if(k==='G1')return 'Основной вратарь';if(k==='G2')return 'Запасной вратарь';
+    const[n,pos]=k.split('-');return n+'-е звено, '+LPOS.find(x=>x[0]===pos)[2]}
+    return 'В запасе'}
+  const t=trTeams(e)[pid];return t?'Команда: '+TEAMS[t]:''}
+function rsvpBtns(e,pid){const cur=rsvpOf(e.id,pid);
+  if(e.type==='game'&&!gameOk(player(pid)))return '<p class="note" style="margin-top:6px">Игры — для игроков с абонементом. С разовой оплатой — только тренировки.</p>';
+  if(!tourOk(e,pid))return '<p class="note" style="margin-top:6px;color:#fbbf24">Турнирная игра — нужен допуск: отметьтесь «Участвую» в турнире и сдайте документы (блок турнира в кабинете).</p>';
+  return `<div class="rsvp">${Object.entries(RSVP).map(([k,t])=>`<button class="r-${k}${cur===k?' on':''}" data-act="rsvp" data-id="${e.id}" data-v="${k}">${t}</button>`).join('')}</div>`}
+const isStaff=()=>U&&(U.role==='admin'||U.role==='coach');
+const coach=id=>D.coaches.find(c=>c.id===id);
+const LEVELS={zero:'Не катаюсь',skate:'Катаюсь, в хоккей не играл',played:'Играл раньше',active:'Играю сейчас'};
+const RSTAT={new:'Новая',called:'Связались',came:'Пришёл на тренировку',player:'Стал игроком',no:'Отказ'};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(D));return true}catch(e){return false}}
+let U=null;try{U=JSON.parse(localStorage.getItem(UKEY))}catch(e){}
+function setUser(u){U=u;try{u?localStorage.setItem(UKEY,JSON.stringify(u)):localStorage.removeItem(UKEY)}catch(e){}}
+
+/* ═══ расчёт баланса ═══ */
+const player=id=>D.players.find(p=>p.id===id);
+const hasNum=p=>p.num!==''&&p.num!=null;   // номер можно присвоить позже
+const numT=p=>hasNum(p)?'#'+p.num:'б/н';
+const CAPS={C:['К','Капитан'],A:['А','Ассистент капитана']};
+const capP=()=>D.players.find(p=>p.cap==='C');
+const capMark=p=>p&&CAPS[p.cap]?` <span class="cap" title="${CAPS[p.cap][1]}">${CAPS[p.cap][0]}</span>`:'';
+// чей кабинет игрока открыт: игрок — свой; капитан-администратор — кабинет игрока-капитана
+const myPid=()=>!U?null:U.role==='player'?U.pid:U.role==='admin'?(capP()||{}).id||null:null;
+const pname=p=>p?p.last+' '+p.first+(p.mid?' '+p.mid:''):'—';
+const sorted=()=>[...D.events].sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+/* абонемент действует месяц с даты оплаты: 15.10 → по 14.11 включительно */
+/* ═══ абонемент: календарные месяцы ═══ */
+// Оплата абонемента — за конкретные месяцы (payment.months = ['2026-09',…]); дата оплаты — только факт получения денег.
+// Оплаченный месяц покрывает все тренировки месяца, сколько бы их ни было. Абонементщику неоплаченный месяц,
+// в котором он тренировался, начисляется как долг за месяц (а не россыпью разовых).
+const mShort=m=>MONTHS[+m.slice(5)-1].slice(0,3)+(m.slice(0,4)!==CUR.slice(0,4)?' '+m.slice(0,4):'');
+const mList=ms=>ms.map(mname).join(', ');
+const mUntil=m=>'до конца '+MONTHS_G[+m.slice(5)-1]+' '+m.slice(0,4);
+function paidMonths(p,skip){const M={};D.payments.filter(x=>x.pid===p.id&&x.kind==='sub'&&x.months&&x.id!==skip).forEach(x=>x.months.forEach(m=>(M[m]=M[m]||[]).push(x)));return M}
+(()=>{let n0=0;   // старые оплаты абонемента без месяцев раскладываем по месяцам подряд
+  D.payments.filter(x=>x.kind==='sub'&&!x.months).sort((a,b)=>a.date.localeCompare(b.date)).forEach(x=>{n0++;
+    const own=Object.keys(paidMonths({id:x.pid})).sort(),last=own[own.length-1],dm=x.date.slice(0,7),n=Math.max(1,Math.floor(x.amount/D.settings.sub));
+    const m=last&&addM(last,1)>=addM(dm,-1)?addM(last,1):dm;x.months=[];for(let i=0;i<n;i++)x.months.push(addM(m,i))});
+  if(n0)save()})();
+// Разовые: оплата — за конкретные тренировки (payment.trs = [id тренировки,…]).
+// аренда экипировки — по выбору на каждой тренировке: D.rentAtt[id тренировки] = [id игроков]
+D.rentAtt=D.rentAtt||{};
+D.players.forEach(p=>{if(p.type==='rent'){p.type='single';p.gear=true}});   // бывший тип «Разовый + аренда»
+const rented=(e,p)=>!!e&&!!p&&(D.rentAtt[e.id]||[]).includes(p.id);
+const trPrice=(p,e)=>D.settings.single+(rented(e,p)?D.settings.rent:0);
+const evById=id=>D.events.find(x=>x.id===id);
+const trSum=(p,ids)=>ids.reduce((t,i)=>t+trPrice(p,evById(i)),0);
+const dShort=d=>+d.slice(8)+' '+MONTHS_G[+d.slice(5,7)-1].slice(0,3);
+function paidTrs(p,skip){const T={};D.payments.filter(x=>x.pid===p.id&&x.kind==='single'&&x.trs&&x.id!==skip).forEach(x=>x.trs.forEach(id=>(T[id]=T[id]||[]).push(x)));return T}
+function singleTrs(p){if(p.type==='sub')return[];const M=paidMonths(p);return sorted().filter(e=>e.type==='training'&&(D.att[e.id]||[]).includes(p.id)&&!M[e.date.slice(0,7)])}
+function suggestTrs(p){if(!p)return[];const T=paidTrs(p),u=singleTrs(p).filter(e=>!T[e.id]);if(u.length)return u.map(e=>e.id);
+  const nx=sorted().find(e=>e.type==='training'&&e.date>=TODAY&&!T[e.id]&&forSquad(e,p.squad||'1'));return nx?[nx.id]:[]}
+function trBox(p,sel,skip,id,show){const T=p?paidTrs(p,skip):{},att=p?singleTrs(p):[],lim=iso(new Date(Date.now()+21*864e5));
+  const up=p?sorted().filter(e=>e.type==='training'&&e.date>=TODAY&&e.date<=lim&&forSquad(e,p.squad||'1')&&!att.includes(e)):[],L=[...att,...up];
+  sel.forEach(i=>{const e=D.events.find(x=>x.id===i);if(e&&!L.includes(e))L.push(e)});L.sort((a,b)=>a.date.localeCompare(b.date));
+  return `<div class="w4 tbox" id="${id}" style="flex-basis:100%;${show?'':'display:none'}"><p class="mut" style="font-size:13px;font-weight:700;margin-bottom:6px">За какие тренировки <span style="font-weight:400">— нажмите на нужные · ${money(D.settings.single)} за тренировку, 🎽 — брал аренду (+${money(D.settings.rent)}) · ⏳ — будущая, предоплата</span></p><div class="row" style="gap:6px">${L.length?L.map(e=>{const o=T[e.id]&&!sel.includes(e.id),fut=!(D.att[e.id]||[]).includes(p.id);
+    return `<label class="mchip${sel.includes(e.id)?' on':''}${o?' paid':''}" title="${o?'Уже оплачена '+fbirth(T[e.id][0].date):fut?'Будущая тренировка — предоплата':'Был на тренировке '+fdate(e.date)}"><input type="checkbox" name="t_${e.id}"${sel.includes(e.id)?' checked':''}${o?' disabled':''} hidden>${dShort(e.date)}${rented(e,p)?' 🎽':''}${o?' ✓':fut?' ⏳':''}</label>`}).join(''):'<span class="mut" style="font-size:13px">Тренировок для оплаты нет</span>'}</div></div>`}
+function ledger(p){
+  const S=D.settings,out=[],M=paidMonths(p),isSub=p.type==='sub';
+  const tr=sorted().filter(e=>e.type==='training'&&(D.att[e.id]||[]).includes(p.id)),trM={};
+  tr.forEach(e=>{const m=e.date.slice(0,7);(trM[m]=trM[m]||[]).push(e)});
+  const months=[...new Set([...Object.keys(M),...(isSub?Object.keys(trM):[])])].sort();
+  months.forEach(m=>out.push({date:m+'-01',t:'Абонемент за '+mname(m)+(M[m]?'':' — не оплачен'),a:-S.sub,m}));
+  const T=paidTrs(p),singles=[];
+  tr.forEach(e=>{if(!months.includes(e.date.slice(0,7))){const pay=(T[e.id]||[])[0]||null;singles.push({e,pay});out.push({date:e.date,t:'Тренировка '+fdate(e.date)+' (разовая)'+(pay?'':' — не оплачена'),a:-S.single})}
+    if(rented(e,p))out.push({date:e.date,t:'Аренда экипировки '+fdate(e.date),a:-S.rent})});
+  D.payments.filter(x=>x.pid===p.id).forEach(x=>out.push({date:x.date,t:'Оплата'+(x.kind==='sub'&&x.months?' абонемента за '+x.months.map(mShort).join(', '):x.kind==='single'&&x.trs&&x.trs.length?' за тренировки '+x.trs.map(i=>{const e=D.events.find(y=>y.id===i);return e?dShort(e.date):'?'}).join(', '):'')+(x.note?' — '+x.note:''),a:+x.amount}));
+  out.sort((a,b)=>b.date.localeCompare(a.date));
+  const charged=-out.filter(x=>x.a<0).reduce((t,x)=>t+x.a,0),paid=out.filter(x=>x.a>0).reduce((t,x)=>t+x.a,0);
+  let until=null;if(M[CUR]){until=CUR;while(M[addM(until,1)])until=addM(until,1)}
+  return {out,M,months,trM,unpaid:months.filter(m=>!M[m]),singles,unpaidTr:singles.filter(x=>!x.pay).map(x=>x.e),charged,paid,bal:paid-charged,trCount:tr.length,sub:until?{until}:null};
+}
+(()=>{let n0=0;D.players.forEach(p=>{const pays=D.payments.filter(x=>x.pid===p.id&&x.kind==='single'&&!x.trs).sort((a,b)=>a.date.localeCompare(b.date));if(!pays.length)return;
+  const T=paidTrs(p),free=singleTrs(p).filter(e=>!T[e.id]);pays.forEach(x=>{n0++;x.trs=free.splice(0,Math.floor(x.amount/trPrice(p))).map(e=>e.id)})});if(n0)save()})();
+function suggestMonths(p,n){if(!p)return[];const M=paidMonths(p),L=ledger(p);let m=L.unpaid.length?L.unpaid[0]:L.unpaidTr.length?L.unpaidTr[0].date.slice(0,7):CUR;const r=[];
+  for(let i=0;r.length<(n||1)&&i<60;i++,m=addM(m,1))if(!M[m])r.push(m);return r}
+function monthsBox(p,sel,skip,id,show){const M=p?paidMonths(p,skip):{},L=[];for(let i=-6;i<=12;i++)L.push(addM(CUR,i));
+  [...sel,...Object.keys(M)].forEach(m=>{if(!L.includes(m))L.push(m)});L.sort();
+  return `<div class="w4 mbox" id="${id}" style="flex-basis:100%;${show?'':'display:none'}"><p class="mut" style="font-size:13px;font-weight:700;margin-bottom:6px">За какие месяцы <span style="font-weight:400">— нажмите на нужные</span></p><div class="row" style="gap:6px">${L.map(m=>{const o=M[m]&&!sel.includes(m);
+    return `<label class="mchip${sel.includes(m)?' on':''}${o?' paid':''}${m===CUR?' cur':''}" title="${o?'Уже оплачен '+fbirth(M[m][0].date):mname(m)}"><input type="checkbox" name="m_${m}"${sel.includes(m)?' checked':''}${o?' disabled':''} hidden>${mShort(m)}${o?' ✓':''}</label>`}).join('')}</div></div>`}
+const subText=L=>(L.sub?`оплачен ${mUntil(L.sub.until)}`:`${mname(CUR)} не оплачен`)+(L.unpaid.length?` · долг за ${L.unpaid.map(mShort).join(', ')}`:'');
+
+/* ═══ общие куски ═══ */
+const evTitle=e=>e.type==='game'?'Игра · «Спарта» — «'+esc(e.opp)+'»':'Тренировка';
+const evPill=e=>e.type==='game'?'<span class="pill gm">'+(e.tid&&tourOf(e)?'Турнир':'Игра')+'</span>':'<span class="pill tr">Тренировка</span>';
+const sqOf=e=>e.squad||'all';
+const sqBadge=s=>`<span class="badge sq${s}">${SQ[s]}</span>`;
+const forSquad=(e,s)=>!s||s==='all'||sqOf(e)==='all'||sqOf(e)===s;
+const LTXT=e=>e.type==='game'?'Состав на игру':'Команды на тренировку';
+const lineBtn=(e,mt)=>lineupView(e)?`<button class="btn sec sm" style="margin-top:${mt||8}px" data-act="event" data-id="${e.id}">👥 ${LTXT(e)}</button>`:'';
+const lineBadge=e=>e.date>=TODAY&&lineupView(e)?` <span class="badge" style="color:var(--ok);border-color:#22c55e66">👥 ${e.type==='game'?'состав готов':'команды готовы'}</span>`:'';
+function evRow(e){const d=dobj(e.date);return `<div class="ev" data-act="event" data-id="${e.id}"><div class="d"><b>${d.getDate()}</b><small>${MONTHS_G[d.getMonth()].slice(0,3)} · ${fdow(e.date)}</small></div><div class="t"><b>${evTitle(e)}${e.score?' · '+esc(e.score):''}</b><span>${esc(e.time)} · ${esc(e.place)}</span><div style="margin-top:4px">${sqBadge(sqOf(e))}${lineBadge(e)}</div></div></div>`}
+const upcoming=(n,s)=>sorted().filter(e=>e.date>=TODAY&&forSquad(e,s)).slice(0,n);
+function badge(t){return `<span class="badge ${t}">${TYPES[t]}</span>`}
+
+/* ═══ страницы ═══ */
+const PAGES={home,calendar,team,join,cabinet,admin};
+const NAV=[['home','Главная'],['calendar','Календарь'],['team','Состав'],['join','Записаться'],['cabinet','Кабинет']];
+let joinDone=false;
+function join(){
+  if(joinDone)return `<section class="wrap sec-pad"><div class="card" style="max-width:560px;margin:0 auto;text-align:center"><div class="big ok">✓</div><h2 style="margin:10px 0">Заявка отправлена</h2><p>Капитан свяжется с Вами по телефону, расскажет, что взять с собой, и подтвердит тренировку.</p><div class="row" style="justify-content:center;margin-top:20px"><a class="btn sec" href="#calendar">Посмотреть календарь</a><button class="btn sec" data-act="joinAgain">Отправить ещё одну</button></div></div></section>`;
+  const S=D.settings, tr=sorted().filter(e=>e.type==='training'&&e.date>=TODAY).slice(0,6);
+  return `<section class="wrap sec-pad"><div class="grid3">
+  <div class="card" style="grid-column:span 2"><h2 style="margin-bottom:6px">Запись на тренировку</h2><p>Хотите попробовать? Оставьте заявку — капитан перезвонит и всё расскажет.</p>
+  <form class="form" id="joinForm" style="margin-top:18px;grid-template-columns:1fr 1fr">
+  <label class="w2">Фамилия и имя *<input name="name" autocomplete="name" required></label>
+  <label>Телефон *<input name="phone" type="tel" autocomplete="tel" placeholder="+7 ___ ___-__-__" required></label>
+  <label>Возраст<input name="age" type="number" min="14" max="80"></label>
+  <label>Опыт<select name="level">${Object.entries(LEVELS).map(([k,t])=>`<option value="${k}">${t}</option>`).join('')}</select></label>
+  <label>Удобная тренировка<select name="ev"><option value="">Любая, договоримся</option>${tr.map(e=>`<option value="${e.id}">${fdate(e.date)}, ${fdow(e.date)} · ${esc(e.time)}</option>`).join('')}</select></label>
+  <label class="sw w2"><input type="checkbox" name="gear"> Своей экипировки нет — нужна аренда</label>
+  <label class="w2">Комментарий<textarea name="note" rows="2" placeholder="Например: катаюсь на коньках, есть свои коньки"></textarea></label>
+  <label class="sw w2" style="font-size:14px;color:var(--mut)"><input type="checkbox" name="consent" required> Согласен на обработку персональных данных</label>
+  <p class="bad w2" id="joinErr" style="display:none;font-size:14px"></p>
+  <div class="w2"><button class="btn" type="submit">Отправить заявку</button></div></form></div>
+  <div class="card"><h3>Что нужно знать</h3>
+  <p style="margin-top:8px">Первая тренировка — ${money(S.single)}, как разовая.</p>
+  <p style="margin-top:8px">Нет экипировки — можно взять в аренду: +${money(S.rent)} <span class="mut">(цена уточняется)</span>.</p>
+  <p style="margin-top:8px">Тренировки ${tr.length?'по '+DOW.filter(d=>tr.some(e=>fdow(e.date)===d)).join(' и ')+' в '+esc(tr[0].time):'по расписанию'}, ${esc(tr[0]?tr[0].place:'')}.</p>
+  <p style="margin-top:8px">Дальше — разовые тренировки или абонемент ${money(S.sub)} в месяц.</p></div>
+  </div></section>`;
+}
+let calM=CUR, adminTab='att', calSq='all';
+
+function home(){
+  const nx=upcoming(1)[0], S=D.settings;
+  return `<section class="wrap"><div class="hero">
+  <div><span class="tag">Любительская хоккейная команда</span>
+  <h1 style="margin-top:18px">ХК <span class="g">«Спарта»</span></h1>
+  <p class="lead">Играем в любительской лиге и тренируемся два раза в неделю. Здесь — календарь игр и тренировок, состав и личный кабинет игрока.</p>
+  <div class="btns"><a class="btn" href="#join">Записаться на тренировку</a><a class="btn sec" href="#calendar">Календарь</a></div></div>
+  ${nx?`<div class="card next" data-act="event" data-id="${nx.id}" style="cursor:pointer"><p>Ближайшее событие</p><div class="when">${fdate(nx.date)}, ${fdow(nx.date)} · ${esc(nx.time)}</div>${evPill(nx)}<h3 style="margin-top:10px">${evTitle(nx)}</h3><p>${esc(nx.place)}</p></div>`:''}
+  </div></section>
+
+  <section class="wrap sec-pad" style="padding-top:20px"><div class="grid3">
+  <div class="card" style="grid-column:span 2"><h2 style="margin-bottom:6px">Ближайшие события</h2>${upcoming(4).map(evRow).join('')||'<p>Событий пока нет</p>'}<a class="btn sec sm" href="#calendar" style="margin-top:14px">Весь календарь</a></div>
+  <div class="card"><h2 style="margin-bottom:10px">Последние игры</h2>${sorted().filter(e=>e.type==='game'&&e.score).slice(-3).reverse().map(e=>`<div class="ev" data-act="event" data-id="${e.id}"><div class="t"><b>«Спарта» — «${esc(e.opp)}»</b><span>${fdate(e.date)}</span></div><b style="margin-left:auto;font-size:22px">${esc(e.score)}</b></div>`).join('')||'<p>Игр ещё не было</p>'}</div>
+  </div></section>
+
+  <section class="wrap sec-pad"><h2>Как попасть на тренировку</h2><div class="grid3">
+  <div class="card"><h3>Разовая тренировка</h3><div class="price">${money(S.single)}</div><p>Оплата за каждое посещение. Игры и турниры — только с абонементом.</p></div>
+  <div class="card" style="border-color:var(--ac2)"><h3>Абонемент на месяц</h3><div class="price">${money(S.sub)}</div><p>Все тренировки календарного месяца, сколько бы их ни было: месяц оплачен — ходите на все.</p></div>
+  <div class="card"><h3>Аренда экипировки</h3><div class="price">+${money(S.rent)}</div><p>К разовой тренировке. Цена условная, уточняется.</p></div>
+  </div><div class="row" style="margin-top:18px"><a class="btn" href="#join">Записаться на первую тренировку</a><span class="note" style="margin:0">или написать капитану: &lt;контакт капитана&gt;</span></div></section>
+
+  <section class="wrap sec-pad"><div class="card"><div class="sponsor"><div class="ph">Логотип спонсора</div>
+  <div><span class="tag">Генеральный спонсор</span><h2 style="margin:12px 0 6px">&lt;Название спонсора&gt;</h2><p>Короткий текст о спонсоре и ссылка на его сайт. Подставим, когда пришлёте логотип и название.</p></div></div></div></section>`;
+}
+
+function calendar(){
+  const y=+calM.slice(0,4), m=+calM.slice(5)-1, first=(new Date(y,m,1).getDay()+6)%7, days=new Date(y,m+1,0).getDate();
+  const evs=sorted().filter(e=>e.date.startsWith(calM)&&forSquad(e,calSq));
+  let cells='';
+  for(let i=0;i<first;i++)cells+='<div class="c out"></div>';
+  for(let d=1;d<=days;d++){const ds=calM+'-'+pad(d);
+    const de=evs.filter(e=>e.date===ds);cells+=`<div class="c${ds===TODAY?' today':''}"${de.length?` data-act="event" data-id="${de[0].id}" style="cursor:pointer"`:''}><div class="n">${d}</div>${evs.filter(e=>e.date===ds).map(e=>`<button class="e ${e.type==='game'?'gm':'tr'}" data-act="event" data-id="${e.id}">${e.type==='game'?'Игра'+(sqOf(e)!=='all'?' ('+sqOf(e)+'-й)':'')+' · '+esc(e.opp):'Тренировка '+esc(e.time)+(sqOf(e)!=='all'?' ('+sqOf(e)+'-й)':'')}</button>`).join('')}</div>`}
+  return `<section class="wrap sec-pad"><div class="chips">${[['all','Все события'],['1','1-й состав'],['2','2-й состав']].map(([k,t])=>`<button class="${calSq===k?'on':''}" data-act="calsq" data-id="${k}">${t}</button>`).join('')}</div><div class="calhead"><button class="btn sec sm" data-act="calprev" aria-label="Предыдущий месяц">←</button><h2>${mname(calM)}</h2><button class="btn sec sm" data-act="calnext" aria-label="Следующий месяц">→</button></div>
+  <div class="cal">${DOW.map(d=>`<div class="dow">${d}</div>`).join('')}${cells}</div>
+  <div class="legend"><span><span class="pill tr">■</span> Тренировка</span><span><span class="pill gm">■</span> Игра</span></div>
+  <div class="card"><h3>События месяца</h3>${evs.map(evRow).join('')||'<p>В этом месяце событий нет</p>'}</div></section>`;
+}
+
+function team(){
+  const block=s=>{const g={G:[],D:[],F:[]};D.players.filter(p=>(p.squad||'1')===s).forEach(p=>g[p.pos].push(p));
+    return `<div style="margin-bottom:44px"><h2 style="margin:0">${SQ[s]}</h2>
+    ${['G','F','D'].map(k=>g[k].length?`<h3 style="margin:22px 0 12px;color:var(--mut)">${POS_PL[k]}</h3><div class="grid4">${g[k].sort((a,b)=>(hasNum(a)?+a.num:999)-(hasNum(b)?+b.num:999)).map(p=>{const a=age(p.birth);return `<div class="card"><div class="pl"><div class="num${s==='2'?' n2':''}">${hasNum(p)?p.num:'—'}</div><div><b>${esc(p.last)}</b>${capMark(p)}<p>${esc(p.first)}</p></div></div>
+      <div class="stats"><div><small>Возраст</small><b>${a!=null?yrs(a):'—'}</b></div><div><small>Рост</small><b>${p.height?p.height+' см':'—'}</b></div><div><small>Вес</small><b>${p.weight?p.weight+' кг':'—'}</b></div></div>
+      ${p.birth?`<p class="note" style="margin-top:8px">🎂 ${fbirth(p.birth)}</p>`:''}</div>`}).join('')}</div>`:'').join('')}</div>`};
+  const staff=D.coaches.length?`<div style="margin-bottom:44px"><h2>Тренерский штаб</h2><div class="grid3">${D.coaches.map(c=>`<div class="card"><div class="pl"><div class="ph" style="width:84px;aspect-ratio:1;padding:4px;font-size:11px;flex:none">Фото</div><div><b style="font-size:18px">${esc(c.last+' '+c.first+(c.mid?' '+c.mid:''))}</b><p>${esc(c.role)}</p><div style="margin-top:6px">${sqBadge(c.squad||'all')}</div></div></div>${c.about?`<p style="margin-top:12px">${esc(c.about)}</p>`:''}</div>`).join('')}</div></div>`:'';
+  const cp=capP(),as=D.players.filter(p=>p.cap==='A');
+  const caps=cp||as.length?`<div class="card" style="margin-bottom:28px"><p>${cp?`Капитан команды: <b style="color:var(--ink)">${esc(pname(cp))}</b> ${numT(cp)}${capMark(cp)}`:''}${as.length?`${cp?'<br>':''}Ассистенты: ${as.map(p=>`<b style="color:var(--ink)">${esc(p.last)} ${esc(p.first)}</b> ${numT(p)}`).join(', ')}`:''}</p></div>`:'';
+  return `<section class="wrap sec-pad">${caps}${staff}${block('1')}${block('2')}<p class="note">Имена условные. Фото игроков и тренеров можно добавить в карточки.</p></section>`;
+}
+
+function loginBox(){return `<section class="wrap sec-pad"><div class="card" style="max-width:480px;margin:0 auto;text-align:center"><h2>Личный кабинет</h2><p>Войдите, чтобы увидеть свой баланс, оплаты и остаток по абонементу.</p><button class="btn" data-act="login" style="margin-top:20px">Войти</button><p class="note">Нет пароля? Попросите у капитана ссылку-приглашение.</p></div></section>`}
+
+function cabinet(){
+  if(!U)return loginBox();
+  if(U.role==='coach'||(U.role==='admin'&&!capP())){location.hash='#admin';return ''}
+  const p=player(myPid());if(!p){setUser(null);return loginBox()}
+  const L=ledger(p);
+  const mAtt=sorted().filter(e=>e.date.startsWith(CUR)&&(D.att[e.id]||[]).includes(p.id));
+  return `<section class="wrap sec-pad"><h2>${esc(p.first)}, привет!</h2>${(()=>{const T=toursNeed(p.id);if(!T.length)return '';const t=T[0],pt=partOf(t,p.id),miss=tMiss(t,p.id).length;
+    return `<button class="card" data-act="toDocs" style="display:block;width:100%;text-align:left;font:inherit;color:var(--ink);cursor:pointer;margin-bottom:16px;border-color:#fbbf24;background:#fbbf2414"><b style="color:#fbbf24;font-size:17px">🏆 ${esc(t.name)}: ${pt?'сдайте документы для допуска':'участвуете?'}</b><p style="margin-top:4px">${pt?'Не хватает: '+miss+' из '+t.docs.length+(t.due?'. Срок — до '+fdate(t.due):'')+'.':'Отметьтесь, будете ли играть в турнире'+(t.due?', и сдайте документы до '+fdate(t.due):'')+'.'} Нажмите, чтобы перейти ↓</p></button>`})()}
+  <div class="kpis">
+   <div class="card"><p>Баланс</p><div class="big ${L.bal<0?'bad':'ok'}">${money(L.bal)}</div><p>${L.bal<0?'Долг — пожалуйста, внесите оплату капитану':L.bal>0?'Переплата, учтём в следующих платежах':'Всё оплачено'}</p></div>
+   <div class="card"><p>Тип участия</p><div class="row" style="margin:8px 0">${badge(p.type)}${sqBadge(p.squad||'1')}</div>${p.type==='sub'||Object.keys(L.M).length?`<p>${L.sub?`Абонемент оплачен <b style="color:var(--ink)">${mUntil(L.sub.until)}</b>`:L.unpaid.includes(CUR)?'':`<span class="bad">За ${mname(CUR)} пока не оплачено</span>`}${L.unpaid.length?`${L.sub||!L.unpaid.includes(CUR)?'<br>':''}<span class="bad">Долг за ${mList(L.unpaid)} — ${money(L.unpaid.length*D.settings.sub)}</span>`:''}</p>
+    <div class="row" style="gap:5px;margin-top:10px">${[-2,-1,0,1,2,3].map(k=>{const m=addM(CUR,k),pd=L.M[m],dbt=L.unpaid.includes(m);return `<span class="mchip${pd?' on':''}" style="cursor:default;${dbt?'border-color:#fb718588;color:var(--bad)':''}" title="${pd?'Оплачен '+fbirth(pd[0].date):dbt?'Не оплачен — долг':'Не оплачен'}">${mShort(m)} ${pd?'✓':dbt?'✗':''}</span>`}).join('')}</div>
+    <p class="note" style="margin-top:8px">Оплаченный месяц — все тренировки месяца, сколько бы их ни было.</p>`:`<p>${money(D.settings.single)} за тренировку · аренда экипировки +${money(D.settings.rent)}, если берёте</p>${L.singles.length?(L.unpaidTr.length?`<p class="bad" style="margin-top:6px">Не оплачены: ${L.unpaidTr.map(e=>dShort(e.date)).join(', ')} — ${money(L.unpaidTr.reduce((t,e)=>t+trPrice(p,e),0))}</p>`:'<p class="ok" style="margin-top:6px">Все тренировки оплачены ✓</p>'):''}`}</div>
+   <div class="card"><p>В этом месяце</p><div class="big">${mAtt.filter(e=>e.type==='training').length}</div><p>тренировок · игр: ${mAtt.filter(e=>e.type==='game').length}</p></div>
+  </div>
+  ${(()=>{const nx=upcoming(1,p.squad||'1')[0];if(!nx)return '';const pl=myPlace(nx,p.id),r=rsvpOf(nx.id,p.id);
+    return `<div class="card next" style="margin-bottom:16px"><p>Ближайшее: ${fdate(nx.date)}, ${fdow(nx.date)} · ${esc(nx.time)}</p><h3 style="margin-top:4px">${evTitle(nx)}</h3>${r||(nx.type==='game'&&!(gameOk(p)&&tourOk(nx,p.id)))?'':'<p style="color:#fbbf24;margin-top:4px">Вы ещё не отметились — будете?</p>'}${rsvpBtns(nx,p.id)}${pl?`<div class="place" style="font-size:16px">${esc(pl)}</div>`:''}${lineupView(nx)||(D.plans[nx.id]||{}).pub?`<div class="row" style="margin-top:10px;gap:8px">${lineBtn(nx,0)}${(D.plans[nx.id]||{}).pub?`<button class="btn sec sm" data-act="event" data-id="${nx.id}">${nx.type==='game'?'Тактика на игру':'План тренировки'}</button>`:''}</div>`:''}</div>`})()}
+  ${docsBlock(p)}
+  ${(()=>{const o=Object.keys(NK),N=(D.notes[p.id]||[]).filter(n=>n.vis==='player').sort((a,b)=>o.indexOf(a.kind)-o.indexOf(b.kind)||(a.done-b.done)||b.date.localeCompare(a.date));if(!N.length)return '';
+    return `<div class="card" style="margin-bottom:16px"><h3>От тренера</h3>${N.map(n=>`<div class="nit"><div class="row" style="gap:6px"><span class="nk ${NK[n.kind][1]}">${NK[n.kind][0]}</span>${n.done?'<span class="ok" style="font-size:12px;font-weight:700">✓ подтянул</span>':''}<span class="mut" style="font-size:12px">${fdate(n.date)}</span></div><p class="pre" style="color:var(--ink);margin-top:4px;${n.done?'opacity:.6':''}">${esc(n.text)}</p></div>`).join('')}</div>`})()}
+  <div class="grid3"><div class="card" style="grid-column:span 2"><h3>История начислений и оплат</h3><div class="tw" style="margin-top:12px"><table class="fit"><tr><th>Дата</th><th>Что</th><th class="r">Сумма</th></tr>${L.out.map(x=>`<tr><td>${fdate(x.date)}</td><td>${esc(x.t)}</td><td class="r ${x.a<0?'bad':'ok'}">${x.a>0?'+':''}${money(x.a)}</td></tr>`).join('')}</table></div>
+  <p class="note">Начислено всего: ${money(L.charged)} · внесено: ${money(L.paid)}</p></div>
+  <div class="card"><h3>Ближайшие события</h3><p class="note" style="margin:0 0 4px">Для ${(p.squad||'1')==='1'?'1-го':'2-го'} состава и общие</p>${upcoming(4,p.squad||'1').map(e=>{const d=dobj(e.date),pl=myPlace(e,p.id);return `<div class="ev" style="cursor:default;align-items:flex-start"><div class="d"><b>${d.getDate()}</b><small>${MONTHS_G[d.getMonth()].slice(0,3)} · ${fdow(e.date)}</small></div><div class="t"><b data-act="event" data-id="${e.id}" style="cursor:pointer">${evTitle(e)}</b><span>${esc(e.time)} · ${esc(e.place)}</span>${rsvpBtns(e,p.id)}${pl?`<span class="place">${esc(pl)}</span>`:''}${lineBtn(e)}</div></div>`}).join('')}</div></div>
+  <div class="card" style="margin-top:16px"><h3>Мои платежи</h3><div style="margin-top:12px">${payHist(p,false)}</div></div>
+  <div class="card" style="margin-top:16px"><h3>Мои данные</h3><p class="note" style="margin-top:2px">Показываются в карточке на странице «Состав».</p>
+  <form class="form" id="meForm" style="margin-top:12px">
+  <label>Дата рождения<input name="birth" type="date" value="${esc(p.birth||'')}" max="${TODAY}"></label>
+  <label>Рост, см<input name="height" type="number" min="120" max="230" value="${esc(p.height||'')}"></label>
+  <label>Вес, кг<input name="weight" type="number" min="35" max="180" value="${esc(p.weight||'')}"></label>
+  <button class="btn" type="submit">Сохранить</button></form></div></section>`;
+}
+
+/* ═══ админка ═══ */
+let lineEv=null;
+const RORD={yes:0,maybe:1,'':2,no:3};
+function lineupView(e){const L=D.lineup[e.id];if(!L||!L.pub)return '';
+  if(e.type!=='game'){const T=trTeams(e),PO={G:0,D:1,F:2},used=new Set(Object.keys(T));
+    if(!used.size)return '';
+    const col=t=>{const ps=invited(e).filter(p=>T[p.id]===t).sort((a,b)=>PO[a.pos]-PO[b.pos]||a.last.localeCompare(b.last));
+      return `<div class="line" style="margin-top:10px"><h4 style="margin-bottom:2px">${TEAMS[t]} · ${ps.length}</h4>${ps.map(p=>`<div class="row" style="padding:3px 0;gap:8px"><span class="badge" style="width:34px;text-align:center">${{G:'Вр',D:'З',F:'Н'}[p.pos]}</span><span>${esc(p.last)} ${esc(p.first[0])}. <span class="mut">${numT(p)}</span></span></div>`).join('')||'<p class="mut">Пока никого</p>'}</div>`};
+    const rest=invited(e).filter(p=>rsvpOf(e.id,p.id)==='yes'&&!used.has(p.id));
+    return `<div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)"><h3>Команды на тренировку</h3>${col('A')}${col('B')}${rest.length?`<p class="note">Без команды: ${rest.map(p=>esc(p.last)+' '+numT(p)).join(', ')}</p>`:''}</div>`}
+  const S=gameSlots(e),nm=id=>{const p=player(id);return p?esc(p.last)+' '+esc(p.first[0])+'. <span class="mut">'+numT(p)+'</span>'+capMark(p):''};
+  const row=(ab,id)=>id?`<div class="row" style="padding:3px 0;gap:8px"><span class="badge" style="width:34px;text-align:center">${ab}</span><span>${nm(id)}</span></div>`:'';
+  const G=row('Осн.',S.G1)+row('Зап.',S.G2);
+  const lines=LINES.map(n=>{const r=LPOS.map(([k,ab])=>row(ab,S[n+'-'+k])).join('');return r?`<div class="line" style="margin-top:10px"><h4 style="margin-bottom:2px">${n}-е звено</h4>${r}</div>`:''}).join('');
+  const used=new Set(Object.values(S)),bench=invited(e).filter(p=>rsvpOf(e.id,p.id)==='yes'&&!used.has(p.id));
+  if(!G&&!lines)return '';
+  return `<div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)"><h3>Состав на игру</h3>${G?`<div class="line" style="margin-top:10px"><h4 style="margin-bottom:2px">Вратари</h4>${G}</div>`:''}${lines}${bench.length?`<p class="note">В запасе: ${bench.map(p=>esc(p.last)+' '+numT(p)).join(', ')}</p>`:''}</div>`}
+function autoLine(eid){
+  const e=D.events.find(x=>x.id===eid);if(!e)return;
+  const cand=invited(e).filter(p=>rsvpOf(eid,p.id)==='yes').sort((a,b)=>RORD[rsvpOf(eid,a.id)]-RORD[rsvpOf(eid,b.id)]);
+  const by=k=>cand.filter(p=>p.pos===k);
+  if(e.type==='game'){
+    const G=by('G'),Dd=by('D'),F=by('F'),s={};
+    if(G[0])s.G1=G[0].id;if(G[1])s.G2=G[1].id;
+    LINES.forEach(n=>{['LD','RD'].forEach(k=>{const p=Dd.shift();if(p)s[n+'-'+k]=p.id});['C','LW','RW'].forEach(k=>{const p=F.shift();if(p)s[n+'-'+k]=p.id})});
+    D.lineup[eid]={slots:s,pub:false};
+  }else{
+    const t={};[...by('G'),...by('D'),...by('F')].forEach((p,i)=>t[p.id]=i%2?'B':'A');
+    D.lineup[eid]={teams:t,pub:false};
+  }
+}
+function tLine(){
+  const list=sorted().filter(e=>e.date>=TODAY).slice(0,10);
+  if(!list.length)return '<div class="card"><p>Ближайших событий нет — добавьте их во вкладке «События».</p></div>';
+  if(!lineEv||!list.find(e=>e.id===lineEv))lineEv=list[0].id;
+  const e=D.events.find(x=>x.id===lineEv), inv=invited(e), L=D.lineup[e.id]||{};
+  const grp={yes:[],maybe:[],'':[],no:[]};inv.forEach(p=>grp[rsvpOf(e.id,p.id)].push(p));
+  const mk=r=>`<span class="mk ${r||'none'}">${r?RSVP_IC[r]:'—'}</span>`;
+  const PORD={G:0,F:1,D:2};   // вратари → нападающие → защитники
+  const ordered=[...inv].sort((a,b)=>PORD[a.pos]-PORD[b.pos]||RORD[rsvpOf(e.id,a.id)]-RORD[rsvpOf(e.id,b.id)]||a.last.localeCompare(b.last));
+  const role=p=>`<span class="badge role-${p.pos}">${POS[p.pos]}</span>`;
+  const opt=sel=>`<option value="">—</option>`+['G','F','D'].map(k=>{const L=ordered.filter(p=>p.pos===k&&rsvpOf(e.id,p.id)==='yes');return L.length?`<optgroup label="${POS_PL[k]}">${L.map(p=>`<option value="${p.id}"${sel===p.id?' selected':''}>${RSVP_IC[rsvpOf(e.id,p.id)]||'·'} ${esc(p.last)} ${esc(p.first)} ${numT(p)} — ${POS[p.pos].toLowerCase()}</option>`).join('')}</optgroup>`:''}).join('');
+  const S=gameSlots(e), T=trTeams(e);
+  const editor=e.type==='game'
+   ?`<div class="line" style="margin-bottom:14px"><h4>Вратари</h4><div class="lines">${[['G1','Осн.'],['G2','Зап.']].map(([k,t])=>`<div class="slot"><b>${t}</b><select class="slotSel" data-slot="${k}">${opt(S[k])}</select></div>`).join('')}</div></div>
+     <div class="lines">${LINES.map(n=>`<div class="card line" style="padding:14px"><h4>${n}-е звено</h4>${LPOS.map(([k,ab])=>`<div class="slot"><b>${ab}</b><select class="slotSel" data-slot="${n}-${k}">${opt(S[n+'-'+k])}</select></div>`).join('')}</div>`).join('')}</div>
+     <p class="note">В состав попадают только нажавшие «Буду» (✓). Кто «Под вопросом» или не отметился — в список не выводится; если игрок передумает, он сам уйдёт из состава. Один игрок — одна позиция: при повторном выборе он переносится.</p>`
+   :`<div class="lines">${['A','B'].map(t=>`<div class="card" style="padding:14px"><h4 style="font-size:15px;margin-bottom:6px">${TEAMS[t]} · ${Object.values(T).filter(x=>x===t).length} чел.</h4>${ordered.filter(p=>T[p.id]===t).map(p=>`<div class="row" style="padding:4px 0;gap:6px">${mk(rsvpOf(e.id,p.id))}<span style="flex:1">${esc(pname(p))} <span class="mut">${numT(p)}</span></span>${role(p)}</div>`).join('')||'<p class="mut">Пока никого</p>'}</div>`).join('')}</div>
+     <div class="tw" style="margin-top:14px">${['G','F','D'].map(k=>{const L=ordered.filter(p=>p.pos===k);return L.length?`<div class="grp">${POS_PL[k]} · ${L.length}</div>`+L.map(p=>`<div class="chk" style="cursor:default">${mk(rsvpOf(e.id,p.id))}<span style="flex:1">${esc(pname(p))} <span class="mut">${numT(p)}</span></span>${role(p)}${rsvpOf(e.id,p.id)==='yes'?`<select class="tsel" data-pid="${p.id}" style="width:130px"><option value="">—</option>${Object.entries(TEAMS).map(([k,t])=>`<option value="${k}"${T[p.id]===k?' selected':''}>${t}</option>`).join('')}</select>`:'<span class="mut" style="width:130px;font-size:13px">не в составе</span>'}</div>`).join(''):''}).join('')}</div>
+     <p class="note">В команды попадают только нажавшие «Буду» (✓). Если игрок передумает, он сам уйдёт из команды.</p>`;
+  return `<div class="card"><div class="form" style="grid-template-columns:1fr"><label>Событие<select id="lineSel">${list.map(x=>`<option value="${x.id}"${x.id===lineEv?' selected':''}>${fdate(x.date)}, ${fdow(x.date)} — ${x.type==='game'?'Игра · '+esc(x.opp):'Тренировка'} · ${SQ[sqOf(x)]}</option>`).join('')}</select></label></div>
+   <div class="grid4" style="margin-top:14px">${[['yes','Будут','ok'],['maybe','Под вопросом',''],['','Не ответили','mut'],['no','Не будут','bad']].map(([k,t,c])=>`<div class="card" style="padding:14px"><p>${t}</p><div class="big ${c}" style="font-size:34px">${grp[k].length}</div>${grp[k].length?['G','F','D'].map(pp=>{const L=grp[k].filter(p=>p.pos===pp);return L.length?`<p style="font-size:13px;margin-top:4px"><b style="color:var(--ink)">${POS_PL[pp]}:</b> ${L.map(p=>esc(p.last)).join(', ')}</p>`:''}).join(''):'<p style="font-size:13px">—</p>'}</div>`).join('')}</div></div>
+   <div class="card" style="margin-top:16px"><div class="row" style="justify-content:space-between;margin-bottom:14px"><h3 style="margin:0">${e.type==='game'?'Состав на игру':'Команды на тренировку'}</h3>
+   <div class="row"><button class="btn sec sm" data-act="lineAuto">Расставить автоматически</button><button class="btn sec sm" data-act="lineClear">Очистить</button><button class="btn sm${L.pub?' sec':''}" data-act="linePub">${L.pub?'Снять публикацию':'Опубликовать игрокам'}</button></div></div>
+   ${L.pub?'<p class="ok" style="margin:-6px 0 12px;font-weight:700">✓ Опубликовано: игроки видят своё место в кабинете</p>':''}${editor}</div>`;
+}
+const TABS=[['req','Заявки'],['line','Сбор и составы'],['pn','Заметки по игрокам'],['plan','План и тактика'],['docs','Турнир'],['att','Посещения'],['pay','Оплаты'],['bal','Балансы'],['ev','События'],['pl','Игроки'],['rep','Отчёт'],['set','Настройки']];
+function tReq(){
+  const L=[...D.requests].sort((a,b)=>(a.status==='new'?0:1)-(b.status==='new'?0:1)||b.date.localeCompare(a.date));
+  if(!L.length)return '<div class="card"><p>Заявок пока нет. Они появятся здесь, когда кто-то заполнит форму «Записаться» на сайте.</p></div>';
+  return `<p class="note" style="margin:0 0 14px">В рабочей версии о новой заявке капитану придёт уведомление на почту или в мессенджер.</p><div class="grid3">${L.map(r=>{const e=D.events.find(x=>x.id===r.ev);return `<div class="card"${r.status==='new'?' style="border-color:var(--ac)"':''}>
+    <div class="row" style="justify-content:space-between"><b style="font-size:17px">${esc(r.name)}</b><span class="badge${r.status==='new'?' sq1':''}">${RSTAT[r.status]}</span></div>
+    <p style="margin-top:6px"><a href="tel:${esc(r.phone.replace(/[^\d+]/g,''))}">${esc(r.phone)}</a>${r.age?' · '+esc(r.age)+' лет':''}</p>
+    <p>${LEVELS[r.level]||''}${r.gear?' · <span style="color:#fbbf24">нужна аренда</span>':''}</p>
+    <p>Тренировка: ${e?fdate(e.date)+', '+fdow(e.date):'любая'}</p>${r.note?`<p style="margin-top:6px;color:var(--ink)">«${esc(r.note)}»</p>`:''}
+    <p class="note">Заявка от ${fdate(r.date)}</p>
+    <div class="row" style="margin-top:12px"><select class="rqSt" data-id="${r.id}" style="background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px">${Object.entries(RSTAT).map(([k,t])=>`<option value="${k}"${r.status===k?' selected':''}>${t}</option>`).join('')}</select>
+    ${r.status!=='player'&&U.role==='admin'?`<button class="btn sm" data-act="rqToPl" data-id="${r.id}">В игроки</button>`:''}<button class="btn del sm" data-act="rqDel" data-id="${r.id}">Удалить</button></div></div>`}).join('')}</div>`;
+}
+const COACH_TABS=['req','line','pn','plan','docs','att','ev'];
+function admin(){
+  if(U&&U.role==='coach'){
+    if(!COACH_TABS.includes(adminTab))adminTab='att';
+    const nNew=D.requests.filter(r=>r.status==='new').length, c=coach(U.cid);
+    return `<section class="wrap sec-pad"><h2>Панель тренера</h2><p style="margin:-14px 0 18px">${esc(c?c.last+' '+c.first:'')}${c?' · '+esc(c.role):''}</p><div class="tabs">${TABS.filter(([k])=>COACH_TABS.includes(k)).map(([k,t])=>`<button class="${adminTab===k?'on':''}" data-act="tab" data-id="${k}">${t}${k==='req'&&nNew?' · '+nNew:''}</button>`).join('')}</div><div id="tab">${({req:tReq,line:tLine,pn:tPn,plan:tPlan,docs:tDocs,att:tAtt,ev:tEv})[adminTab]()}</div><p class="note">Оплаты и балансы ведёт капитан.</p></section>`;
+  }
+  if(!U||U.role!=='admin')return U?`<section class="wrap sec-pad"><div class="card"><h2>Нет доступа</h2><p>Панель доступна только капитану и администраторам.</p></div></section>`:loginBox();
+  const nNew=D.requests.filter(r=>r.status==='new').length;
+  return `<section class="wrap sec-pad"><h2>Панель капитана</h2><div class="tabs">${TABS.map(([k,t])=>`<button class="${adminTab===k?'on':''}" data-act="tab" data-id="${k}">${t}${k==='req'&&nNew?' · '+nNew:''}</button>`).join('')}</div><div id="tab">${({req:tReq,line:tLine,pn:tPn,plan:tPlan,docs:tDocs,att:tAtt,pay:tPay,bal:tBal,ev:tEv,pl:tPl,rep:tRep,set:tSet})[adminTab]()}</div></section>`;
+}
+let attEv=null;
+function tAtt(){
+  const list=sorted().filter(e=>e.date<=TODAY).reverse();
+  if(!list.length)return '<div class="card"><p>Прошедших событий пока нет</p></div>';
+  if(!attEv||!list.find(e=>e.id===attEv))attEv=list[0].id;
+  const e=D.events.find(x=>x.id===attEv), fromR=!D.att[e.id],
+    here=D.att[e.id]||Object.entries(D.rsvp[e.id]||{}).filter(([,v])=>v==='yes').map(([k])=>k);
+  return `<div class="card"><div class="form" style="grid-template-columns:1fr"><label>Событие<select id="attSel">${list.map(x=>`<option value="${x.id}"${x.id===attEv?' selected':''}>${fdate(x.date)}, ${fdow(x.date)} — ${x.type==='game'?'Игра · '+esc(x.opp):'Тренировка'}</option>`).join('')}</select></label></div>
+  <p class="note">${e.type==='training'?'Разовым начислится '+money(D.settings.single)+' за тренировку; у абонементщиков тренировка входит в оплаченный месяц. Аренда экипировки — по выбору: отметьте «🎽 аренда» тем, кто брал (+'+money(D.settings.rent)+').':'Посещение игры отмечается для статистики, за игру не начисляется.'}${fromR&&here.length?' <b style="color:#fbbf24">Заранее отмечены те, кто нажал «Буду» — проверьте и сохраните.</b>':''}</p>
+  <div class="tw" style="margin-top:12px">${(()=>{const s=sqOf(e), PO={G:0,F:1,D:2}, srt=L=>L.sort((a,b)=>PO[a.pos]-PO[b.pos]||a.last.localeCompare(b.last)),
+    rentOn=p=>D.rentAtt[e.id]?D.rentAtt[e.id].includes(p.id):!!p.gear&&here.includes(p.id),
+    row=p=>`<div class="chk" style="cursor:default"><label style="display:flex;gap:10px;align-items:center;flex:1;cursor:pointer;min-width:0"><input type="checkbox" class="attCb" value="${p.id}"${here.includes(p.id)?' checked':''}><span>${esc(pname(p))} <span class="mut">${numT(p)}</span></span></label><span class="badge role-${p.pos}">${POS[p.pos]}</span>${badge(p.type)}${e.type==='training'?`<label style="display:flex;gap:5px;align-items:center;font-size:13px;color:var(--mut);cursor:pointer;white-space:nowrap" title="Брал экипировку в аренду: +${money(D.settings.rent)}"><input type="checkbox" class="rentCb" value="${p.id}"${rentOn(p)?' checked':''}> 🎽 аренда</label>`:''}</div>`;
+    if(s==='all')return ['1','2'].map(k=>`<div class="grp">${SQ[k]}</div>`+srt(D.players.filter(p=>(p.squad||'1')===k)).map(row).join('')).join('');
+    const own=srt(D.players.filter(p=>(p.squad||'1')===s)), other=srt(D.players.filter(p=>(p.squad||'1')!==s));
+    return `<div class="grp">${SQ[s]}</div>${own.map(row).join('')}${other.length?`<div class="grp">Из другого состава (если подменял)</div>${other.map(row).join('')}`:''}`})()}</div>
+  <div class="row" style="margin-top:14px"><button class="btn" data-act="attSave">Сохранить · <span id="attCnt">${here.length}</span> чел.</button><button class="btn sec sm" data-act="attAll">Отметить всех</button></div></div>`;
+}
+const KINDS={sub:'Абонемент',single:'Разовые тренировки',other:'Доплата / другое'};
+// форма оплаты: показать нужный выбор (месяцы / тренировки), пересчитать сумму и подсказку
+function autoSub(f){const S=D.settings,a=Math.round(+f.amount.value||0);if(f.kind.value!=='single'||f.dataset.keep||a<S.sub)return false;
+  const pl=player(f.pid?f.pid.value:f.dataset.pid),ms=suggestMonths(pl,Math.floor(a/S.sub)),mb=f.querySelector('.mbox');
+  f.kind.value='sub';mb.outerHTML=monthsBox(pl,ms,f.dataset.id||payEdit,mb.id,true);f.dataset.auto='1';payFormSync(f,false);
+  toast(`${money(a)} — это абонемент: записываю за ${mList(ms)}`);return true}
+function payFormSync(f,setAmount){const k=f.kind.value,pid=f.pid?f.pid.value:f.dataset.pid,pl=player(pid);
+  const mb=f.querySelector('.mbox'),tb=f.querySelector('.tbox');if(mb)mb.style.display=k==='sub'?'':'none';if(tb)tb.style.display=k==='single'?'':'none';
+  const ms=[...f.querySelectorAll('input[name^="m_"]:checked')].map(i=>i.name.slice(2)),ts=[...f.querySelectorAll('input[name^="t_"]:checked')].map(i=>i.name.slice(2));
+  if(setAmount&&(k==='sub'?ms.length:k==='single'?ts.length:0))f.amount.value=k==='sub'?ms.length*D.settings.sub:trSum(pl,ts);
+  const h=f.querySelector('.payHintBox');if(h)h.textContent=(k==='sub'&&f.dataset.auto?`Сумма не меньше цены абонемента (${money(D.settings.sub)}) — записываю как абонемент. Если это всё же разовые — выберите «Разовые тренировки». `:'')+payHint(k,f.date.value,pid,f.amount.value,ms,ts)}
+function payHint(kind,date,pid,amount,months,trs){
+  if(kind==='single'){const pl=player(pid),ts=trs||[],n=ts.length,sum=trSum(pl,ts),r=ts.filter(i=>rented(evById(i),pl)).length,a=Math.round(+amount||0);if(!n)return 'Отметьте, за какие тренировки эта оплата.';
+    return `Разовые за ${ts.map(i=>{const e=evById(i);return e?dShort(e.date)+(rented(e,pl)?' (+аренда)':''):''}).join(', ')}: ${n} × ${money(D.settings.single)}${r?` + аренда ${r} × ${money(D.settings.rent)}`:''} = ${money(sum)}.`+(a>sum?` Остаток ${money(a-sum)} — переплата.`:a<sum?` Внесено на ${money(sum-a)} меньше — останется долг.`:'')}
+  if(kind!=='sub')return 'Сумма пойдёт в счёт долга или доплаты.';
+  const S=D.settings,ms=months||[],n=ms.length,a=Math.round(+amount||0);
+  if(!n)return 'Отметьте, за какие месяцы эта оплата.';
+  return `Абонемент за ${mList(ms)}: ${n} × ${money(S.sub)} = ${money(n*S.sub)}.`+(a>n*S.sub?` Остаток ${money(a-n*S.sub)} — переплата.`:a<n*S.sub?` Внесено на ${money(n*S.sub-a)} меньше — останется долг.`:'')+' Все тренировки этих месяцев входят в абонемент; дата оплаты на расчёт не влияет.';
+}
+
+let payEdit=null,payF={pid:'',m:''};
+function tPay(){
+  const S=D.settings, e=payEdit?D.payments.find(x=>x.id===payEdit):null, p0=e?player(e.pid):D.players[0], k0=e?e.kind:p0&&p0.type==='sub'?'sub':'single', m0=e?(e.months||[]):k0==='sub'?suggestMonths(p0,1):[], t0=e?(e.trs||[]):k0==='single'?suggestTrs(p0):[], a0=e?e.amount:k0==='sub'?S.sub*Math.max(1,m0.length):(t0.length?trSum(p0,t0):S.single), d0=e?e.date:TODAY;
+  const months=[...new Set(D.payments.map(x=>x.date.slice(0,7)))].sort().reverse();
+  const L=[...D.payments].filter(x=>(!payF.pid||x.pid===payF.pid)&&(!payF.m||x.date.startsWith(payF.m))).sort((a,b)=>b.date.localeCompare(a.date));
+  const fsel='background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px;font:inherit;font-size:14px';
+  return `<div class="card"${e?' style="border-color:var(--ac2)"':''}><h3>${e?'Изменить оплату':'Записать оплату'}</h3><form class="form" id="payForm" style="margin-top:12px"${e&&e.kind==='single'?' data-keep="1"':''}>
+  <label class="w2">ФИО игрока<select name="pid" required>${D.players.map(p=>`<option value="${p.id}" data-t="${p.type}"${p0&&p.id===p0.id?' selected':''}>${esc(pname(p))}</option>`).join('')}</select></label>
+  <label>За что<select name="kind">${Object.entries(KINDS).map(([k,t])=>`<option value="${k}"${k===k0?' selected':''}>${t}</option>`).join('')}</select></label>
+  <label>Сумма, ₽<input name="amount" type="number" min="1" step="1" value="${a0}" required></label>
+  <label>Дата оплаты<input name="date" type="date" value="${d0}" required></label>
+  <label class="w2">Комментарий<input name="note" value="${e?esc(e.note||''):''}" placeholder="Необязательно: наличными, переводом…"></label>
+  <div class="row"><button class="btn" type="submit">${e?'Сохранить':'Записать'}</button>${e?'<button class="btn sec sm" type="button" data-act="payCancel">Отмена</button>':''}</div>
+  ${monthsBox(p0,m0,payEdit,'payMonths',k0==='sub')}${trBox(p0,t0,payEdit,'payTrs',k0==='single')}
+  <p class="note w4 payHintBox" id="payHint">${payHint(k0,d0,p0&&p0.id,a0,m0,t0)}</p></form></div>
+  <div class="card" style="margin-top:16px"><h3>Все оплаты</h3>
+  <div class="row" style="margin-top:12px"><select id="payFP" style="${fsel}"><option value="">Все игроки</option>${[...D.players].sort((a,b)=>a.last.localeCompare(b.last)).map(p=>`<option value="${p.id}"${payF.pid===p.id?' selected':''}>${esc(p.last)} ${esc(p.first)}</option>`).join('')}</select>
+   <select id="payFM" style="${fsel}"><option value="">Все месяцы</option>${months.map(m=>`<option value="${m}"${payF.m===m?' selected':''}>${mname(m)}</option>`).join('')}</select>
+   <span class="mut" id="payTot" style="font-size:14px">${L.length} ${plural(L.length,'оплата','оплаты','оплат')} · итого <b class="ok">${money(L.reduce((t,x)=>t+x.amount,0))}</b></span></div>
+  <div class="tw" style="margin-top:12px"><table id="payTbl"><tr><th>Дата</th><th>ФИО</th><th>За что</th><th>Комментарий</th><th class="r">Сумма</th><th></th></tr>
+  ${L.map(x=>`<tr${x.id===payEdit?' style="background:#38bdf81a"':''}><td>${fbirth(x.date)}</td><td><button data-act="payHist" data-id="${x.pid}" style="background:none;border:0;padding:0;font:inherit;color:var(--ink);text-decoration:underline dotted;cursor:pointer;text-align:left" title="История платежей игрока">${esc(pname(player(x.pid)))}</button></td><td>${KINDS[x.kind]||'—'}${x.kind==='sub'&&x.months?` <span class="mut">за ${x.months.map(mShort).join(', ')}</span>`:''}</td><td>${esc(x.note)}</td><td class="r ok">+${money(x.amount)}</td><td><button class="btn sec sm" data-act="payEdit" data-id="${x.id}">Изменить</button> <button class="btn del sm" data-act="payDel" data-id="${x.id}">Удалить</button></td></tr>`).join('')||'<tr><td colspan="6" class="mut">Оплат по выбранным условиям нет</td></tr>'}</table></div>
+  <p class="note">Ошиблись датой или суммой — нажмите «Изменить»: абонементы и баланс игрока пересчитаются.</p></div>`;
+}
+// admin — можно править; edit — id платежа в режиме правки, 'new' — добавление
+function payHist(p,admin,edit){
+  const L=ledger(p), S=D.settings, pays=D.payments.filter(x=>x.pid===p.id).sort((a,b)=>b.date.localeCompare(a.date)||b.id.localeCompare(a.id));
+  const inp='background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font:inherit;font-size:14px';
+  const trD=ids=>ids.map(i=>{const e=D.events.find(y=>y.id===i);return e?dShort(e.date):'?'}).join(', ');
+  const what=x=>x.kind==='single'&&x.trs?`Разовые за <b style="color:var(--ink)">${trD(x.trs)||'—'}</b>${x.trs.length&&x.amount!==trSum(p,x.trs)?`<br><span class="${x.amount>trSum(p,x.trs)?'mut':'bad'}" style="font-size:12px">${x.amount>trSum(p,x.trs)?'переплата '+money(x.amount-trSum(p,x.trs)):'не хватает '+money(trSum(p,x.trs)-x.amount)}</span>`:''}`:x.kind!=='sub'?(KINDS[x.kind]||'—'):`Абонемент${x.months?` за <b style="color:var(--ink)">${x.months.map(mShort).join(', ')}</b>`:''}${x.months&&x.amount!==x.months.length*S.sub?`<br><span class="${x.amount>x.months.length*S.sub?'mut':'bad'}" style="font-size:12px">${x.amount>x.months.length*S.sub?'переплата '+money(x.amount-x.months.length*S.sub):'не хватает '+money(x.months.length*S.sub-x.amount)}</span>`:''}`;
+  const form=x=>{const k=x?x.kind:p.type==='sub'?'sub':'single',ms=x?(x.months||[]):k==='sub'?suggestMonths(p,1):[],ts=x?(x.trs||[]):k==='single'?suggestTrs(p):[];
+    return `<div class="card" style="margin-top:12px;padding:14px;border-color:var(--ac2)"><b style="color:var(--ink)">${x?'Изменить платёж от '+fbirth(x.date):'Новый платёж'}</b><form id="phForm" data-pid="${p.id}"${x?` data-id="${x.id}"`:''}${x&&x.kind==='single'?' data-keep="1"':''} class="row" style="gap:8px;margin-top:10px">
+    <input name="date" type="date" required value="${x?x.date:TODAY}" style="${inp}" title="Дата получения денег">
+    <select name="kind" style="${inp}">${Object.entries(KINDS).map(([kk,t])=>`<option value="${kk}"${k===kk?' selected':''}>${t}</option>`).join('')}</select>
+    <input name="amount" type="number" min="1" step="1" required value="${x?x.amount:k==='sub'?S.sub*Math.max(1,ms.length):(ts.length?trSum(p,ts):S.single)}" style="${inp};width:110px"> ₽
+    <input name="note" value="${x?esc(x.note||''):''}" placeholder="Комментарий" style="${inp};flex:1;min-width:140px">
+    <button class="btn sm" type="submit">${x?'Сохранить':'Добавить'}</button><button class="btn sec sm" type="button" data-act="phCancel" data-id="${p.id}">Отмена</button>
+    ${monthsBox(p,ms,x&&x.id,'phMonths',k==='sub')}${trBox(p,ts,x&&x.id,'phTrs',k==='single')}<p class="note payHintBox" style="flex-basis:100%;margin:0">${payHint(k,'',p.id,x?x.amount:k==='sub'?S.sub*Math.max(1,ms.length):(ts.length?trSum(p,ts):S.single),ms,ts)}</p></form></div>`};
+  const rows=pays.map(x=>`<tr${x.id===edit?' style="background:#38bdf81a"':''}><td>${fbirth(x.date)}</td><td>${what(x)}</td><td>${esc(x.note||'')}</td><td class="r ok"><b>+${money(x.amount)}</b></td>${admin?`<td class="r" style="white-space:nowrap"><button class="btn sec sm" data-act="phEdit" data-id="${x.id}" data-p="${p.id}">Изменить</button> <button class="btn del sm" data-act="phDel" data-id="${x.id}" data-p="${p.id}">Удалить</button></td>`:''}</tr>`).join('');
+  const sumRow=(t,v,c)=>`<div class="card" style="padding:10px 14px"><p style="font-size:13px">${t}</p><b class="${c||''}" style="font-size:20px">${v}</b></div>`;
+  const allM=[...new Set([...L.months,...Object.keys(L.M)])].sort().reverse();
+  return `<div class="grid3" style="gap:8px">${sumRow('Внесено всего · '+pays.length+' '+plural(pays.length,'платёж','платежа','платежей'),money(L.paid),'ok')}${sumRow('Начислено всего',money(L.charged))}${sumRow('Баланс',money(L.bal),L.bal<0?'bad':'ok')}</div>
+  ${L.singles.length?`<p class="note">${L.unpaidTr.length?`<span class="bad">Не оплачены тренировки: ${L.unpaidTr.map(e=>dShort(e.date)).join(', ')} — ${money(L.unpaidTr.reduce((t,e)=>t+trPrice(p,e),0))}</span>`:'<span class="ok">Все разовые тренировки оплачены</span>'}</p>`:''}
+  <p class="note">${L.sub?`Абонемент оплачен <b style="color:var(--ink)">${mUntil(L.sub.until)}</b>`:p.type==='sub'?`<span class="bad">${mname(CUR)} не оплачен</span>`:''}${L.unpaid.length?` · <span class="bad">долг за ${mList(L.unpaid)}</span>`:''}</p>
+  ${edit?form(edit==='new'?null:pays.find(x=>x.id===edit)):''}
+  <div class="tw" style="margin-top:12px"><table><tr><th>Дата оплаты</th><th>За что</th><th>Комментарий</th><th class="r">Сумма</th>${admin?'<th></th>':''}</tr>
+  ${rows||`<tr><td colspan="${admin?5:4}" class="mut">Платежей пока нет</td></tr>`}
+  <tr><td colspan="3"><b>Итого внесено</b></td><td class="r ok"><b>${money(L.paid)}</b></td>${admin?'<td></td>':''}</tr></table></div>
+  ${admin&&edit!=='new'?`<div class="row" style="margin-top:12px"><button class="btn sm" data-act="phNew" data-id="${p.id}">+ Добавить платёж</button><span class="note" style="margin:0">Ошиблись суммой, датой, месяцами или тренировками — «Изменить» в нужной строке.</span></div>`:''}
+  ${L.singles.length?`<details style="margin-top:14px"${admin?'':' open'}><summary style="cursor:pointer;color:var(--ac2);font-weight:700">Разовые тренировки по датам (${L.singles.length})</summary><div class="tw" style="margin-top:8px">${[...L.singles].reverse().map(({e,pay})=>`<div class="chk" style="cursor:default;flex-wrap:wrap"><span style="flex:1;min-width:130px;color:var(--ink)">${fdate(e.date)}, ${fdow(e.date)}</span><span class="mut" style="font-size:13px">${money(trPrice(p,e))}${rented(e,p)?' · с арендой':''}</span><span class="nk ${pay?'ok':'bad'}">${pay?'✓ оплачена '+fdate(pay.date):'не оплачена'}</span></div>`).join('')}</div></details>`:''}
+  ${allM.length?`<details style="margin-top:14px"${admin?'':' open'}><summary style="cursor:pointer;color:var(--ac2);font-weight:700">Абонемент по месяцам (${allM.length})</summary><div class="tw" style="margin-top:8px">${allM.map(m=>{const pd=L.M[m],n=(L.trM[m]||[]).length;return `<div class="chk" style="cursor:default;flex-wrap:wrap"><span style="flex:1;min-width:130px;color:var(--ink)">${mname(m)}</span><span class="mut" style="font-size:13px">${m<=CUR?'тренировок: '+n:'впереди'}</span><span class="nk ${pd?'ok':'bad'}">${pd?'✓ оплачен '+fdate(pd[0].date):'не оплачен — долг '+money(S.sub)}</span></div>`}).join('')}</div></details>`:''}`;
+}
+let phP=null,phMsg='';
+function paySnap(p,payId){const L=ledger(p),x=D.payments.find(y=>y.id===payId);
+  return {bal:L.bal,unpaid:L.unpaid,unpaidTr:L.unpaidTr.map(e=>e.date),singles:L.out.filter(y=>/разовая\)/.test(y.t)).map(y=>y.date),months:x&&x.months?x.months.join(','):'',trs:x&&x.trs?x.trs.map(i=>{const e=D.events.find(y=>y.id===i);return e?dShort(e.date):''}).join(', '):''}}
+function snapDiff(a,b,x){const out=[],ml=v=>v.split(',').map(mname).join(', ');
+  if(x&&x.kind==='sub'&&b.months)out.push(`Оплата за: <b>${ml(b.months)}</b>`+(a.months&&a.months!==b.months?` <span class="mut">(было: ${ml(a.months)})</span>`:''));
+  const cl=a.unpaid.filter(m=>!b.unpaid.includes(m)),op=b.unpaid.filter(m=>!a.unpaid.includes(m));
+  if(x&&x.kind==='single'&&b.trs)out.push(`Оплата за тренировки: <b>${b.trs}</b>`+(a.trs&&a.trs!==b.trs?` <span class="mut">(было: ${a.trs})</span>`:''));
+  const tp=(a.unpaidTr||[]).filter(d=>!(b.unpaidTr||[]).includes(d)),tu=(b.unpaidTr||[]).filter(d=>!(a.unpaidTr||[]).includes(d));
+  if(tp.length)out.push('Оплачены тренировки: '+tp.map(dShort).join(', '));if(tu.length)out.push('Снова не оплачены: '+tu.map(dShort).join(', '));
+  if(cl.length)out.push('Закрыт долг за '+mList(cl));if(op.length)out.push('Появился долг за '+mList(op));
+  const g=a.singles.filter(d=>!b.singles.includes(d)),ad=b.singles.filter(d=>!a.singles.includes(d));
+  if(g.length)out.push('Вошли в абонемент: '+g.map(fdate).join(', '));if(ad.length)out.push('Стали разовыми: '+ad.map(fdate).join(', '));
+  out.push(a.bal!==b.bal?`Баланс: ${money(a.bal)} → <b class="${b.bal<0?'bad':'ok'}">${money(b.bal)}</b>`:`Баланс не изменился: <b class="${b.bal<0?'bad':'ok'}">${money(b.bal)}</b>`+(x&&x.kind==='sub'&&a.months===b.months?' <span class="mut">— для абонемента важны месяцы, а не дата оплаты</span>':x&&x.kind==='single'&&a.trs===b.trs?' <span class="mut">— для разовых важны отмеченные тренировки, а не дата оплаты</span>':''));
+  return out.join('<br>')}
+function openPayHist(pid,edit){const p=player(pid);if(!p)return;phP=pid;
+  const msg=phMsg;phMsg='';
+  modal(`<h2>Платежи игрока</h2><p style="margin-top:4px"><b style="color:var(--ink)">${esc(pname(p))}</b>${capMark(p)} ${badge(p.type)} ${sqBadge(p.squad||'1')}</p>${msg?`<div class="card" style="margin-top:12px;padding:12px 14px;border-color:#22c55e88;background:#22c55e12"><b style="color:var(--ok)">✓ Пересчитано</b><p style="margin-top:4px;color:var(--ink);font-size:14px">${msg}</p></div>`:''}<div style="margin-top:14px">${payHist(p,true,edit)}</div>`);
+  $('modal').querySelector('.box').style.maxWidth='860px'}
+function balances(){return D.players.map(p=>({p,L:ledger(p)})).sort((a,b)=>a.L.bal-b.L.bal)}
+function tBal(){
+  const B=balances(), debt=B.filter(x=>x.L.bal<0).reduce((s,x)=>s+x.L.bal,0);
+  return `<div class="kpis"><div class="card"><p>Общий долг команды</p><div class="big bad">${money(debt)}</div></div><div class="card"><p>Должников</p><div class="big">${B.filter(x=>x.L.bal<0).length}</div></div><div class="card"><p>Собрано всего</p><div class="big ok">${money(D.payments.reduce((s,x)=>s+x.amount,0))}</div></div></div>
+  <div class="tw"><table><tr><th>Игрок</th><th>Состав</th><th>Тип</th><th class="r">Тренировок</th><th class="r" title="Всё, что положено оплатить за всё время, включая абонемент на оплаченные вперёд месяцы">Начислено всего</th><th class="r">Внесено всего</th><th class="r">Баланс</th><th class="r">Что оплачено</th></tr>
+  ${B.map(({p,L})=>`<tr><td><b>${esc(pname(p))}</b>${capMark(p)} <button class="btn sec sm" style="padding:3px 8px;font-size:12px" data-act="balInfo" data-id="${p.id}">Расшифровка</button> <button class="btn sec sm" style="padding:3px 8px;font-size:12px" data-act="payHist" data-id="${p.id}">Платежи</button></td><td>${(p.squad||'1')}-й</td><td>${badge(p.type)}</td><td class="r">${L.trCount}</td><td class="r">${money(L.charged)}</td><td class="r">${money(L.paid)}</td><td class="r ${L.bal<0?'bad':'ok'}"><b>${money(L.bal)}</b></td><td class="r ${L.sub?'':p.type==='sub'||L.unpaidTr.length?'bad':'mut'}">${L.sub||p.type==='sub'?subText(L):L.unpaidTr.length?'не оплачены: '+L.unpaidTr.map(e=>dShort(e.date)).join(', '):L.singles.length?'разовые оплачены':'—'}</td></tr>`).join('')}</table></div>
+  <p class="note"><b>Как читать:</b> «Начислено всего» — всё, что игрок должен был оплатить за всё время: месяцы абонемента (в том числе оплаченные вперёд) и разовые тренировки, на которых он был без действующего абонемента. «Внесено всего» — все его оплаты. <b>Баланс = Внесено − Начислено</b>: минус — долг, плюс — переплата. «Расшифровка» покажет, из чего сложились суммы.</p>
+  <div class="row" style="margin-top:14px"><button class="btn sec sm" data-act="csv">Выгрузить в Excel (CSV)</button></div>`;
+}
+let evEdit=null;
+function tEv(){
+  const e=evEdit?D.events.find(x=>x.id===evEdit):null;
+  return `<div class="card"><h3>${e?'Изменить событие':'Добавить событие'}</h3><form class="form" id="evForm" style="margin-top:12px">
+  <label>Тип<select name="type"><option value="training"${e&&e.type==='training'?' selected':''}>Тренировка</option><option value="game"${e&&e.type==='game'?' selected':''}>Игра</option></select></label>
+  <label>Дата<input name="date" type="date" value="${e?e.date:TODAY}" required></label>
+  <label>Время<input name="time" type="time" value="${e?esc(e.time):'21:15'}" required></label>
+  <label>Для кого<select name="squad">${[['all',SQ.all],['1',SQ['1']],['2',SQ['2']]].map(([k,t])=>`<option value="${k}"${(e?sqOf(e):'all')===k?' selected':''}>${t}</option>`).join('')}</select></label>
+  <label>Счёт (после игры)<input name="score" value="${e?esc(e.score||''):''}" placeholder="4:2"></label>
+  <label class="w2">Место<input name="place" value="${e?esc(e.place):'Ледовая арена (адрес условный)'}" required></label>
+  <label class="w2">Соперник (для игры)<input name="opp" value="${e?esc(e.opp||''):''}" placeholder="Название команды"></label>
+  <label class="w2">Турнир (для игры)<select name="tid"><option value="">— обычная игра —</option>${D.tours.map(t=>`<option value="${t.id}"${e&&e.tid===t.id?' selected':''}>${esc(t.name)}</option>`).join('')}</select></label>
+  <div class="row w4"><button class="btn" type="submit">${e?'Сохранить':'Добавить'}</button>${e?'<button class="btn sec sm" type="button" data-act="evCancel">Отмена</button>':''}</div></form></div>
+  <div class="card" style="margin-top:16px"><h3>Все события</h3><div class="tw" style="margin-top:12px"><table><tr><th>Дата</th><th>Событие</th><th>Для кого</th><th>Время</th><th>Счёт</th><th></th></tr>
+  ${sorted().reverse().map(x=>`<tr><td>${fdate(x.date)}, ${fdow(x.date)}</td><td>${evPill(x)} ${x.type==='game'?esc(x.opp):''}</td><td>${sqBadge(sqOf(x))}</td><td>${esc(x.time)}</td><td>${esc(x.score||'')}</td><td><button class="btn sec sm" data-act="evEdit" data-id="${x.id}">Изменить</button> <button class="btn del sm" data-act="evDel" data-id="${x.id}">Удалить</button></td></tr>`).join('')}</table></div></div>`;
+}
+let plEdit=null;
+function tPl(){
+  const e=plEdit?player(plEdit):null, v=k=>e?esc(e[k]??''):'', sel=(k,val)=>e&&e[k]===val?' selected':'';
+  return `<div class="card"${e?' style="border-color:var(--ac2)"':''}><h3>${e?'Изменить: '+esc(pname(e)):'Добавить игрока'}</h3><form class="form" id="plForm" style="margin-top:12px">
+  <label>Фамилия<input name="last" value="${v('last')}" required></label><label>Имя<input name="first" value="${v('first')}" required></label>
+  <label>Отчество<input name="mid" value="${v('mid')}"></label>
+  <label>Номер<input name="num" type="number" min="0" max="99" value="${v('num')}" placeholder="можно позже"></label>
+  <label>Амплуа<select name="pos"><option value="G"${sel('pos','G')}>Вратарь</option><option value="F"${sel('pos','F')||(!e?' selected':'')}>Нападающий</option><option value="D"${sel('pos','D')}>Защитник</option></select></label>
+  <label>Состав<select name="squad"><option value="1"${sel('squad','1')}>1-й состав</option><option value="2"${sel('squad','2')}>2-й состав</option></select></label>
+  <label>Дата рождения<input name="birth" type="date" value="${v('birth')}" max="${TODAY}"></label>
+  <label>Рост, см<input name="height" type="number" min="120" max="230" value="${v('height')}"></label>
+  <label>Вес, кг<input name="weight" type="number" min="35" max="180" value="${v('weight')}"></label>
+  <label>Телефон<input name="phone" type="tel" placeholder="+7 ___ ___-__-__" value="${v('phone')}" required></label>
+  <label>Роль в команде<select name="cap"><option value="">Игрок</option><option value="C"${sel('cap','C')}>Капитан (К)</option><option value="A"${sel('cap','A')}>Ассистент (А)</option></select></label>
+  <label class="sw" style="gap:8px;align-self:center"><input type="checkbox" name="gear"${e&&e.gear?' checked':''}> Обычно берёт экипировку в аренду</label>
+  <label>Тип участия<select name="type">${Object.entries(TYPES).map(([k,t])=>`<option value="${k}"${sel('type',k)}>${t}</option>`).join('')}</select></label>
+  <div class="row"><button class="btn" type="submit">${e?'Сохранить':'Добавить'}</button>${e?'<button class="btn sec sm" type="button" data-act="plCancel">Отмена</button>':''}</div></form>
+  <p class="note">${e?'Изменения сразу появятся на странице «Состав».':'После добавления нажмите «Приглашение» и отправьте ссылку игроку: по ней он задаст пароль для входа. Рост, вес и дату рождения игрок может заполнить и сам в кабинете.'}</p></div>
+  <div class="card" style="margin-top:16px"><h3>Игроки</h3><div class="tw" style="margin-top:12px"><table><tr><th>#</th><th>Игрок</th><th>Д. р.</th><th class="r">Рост</th><th class="r">Вес</th><th>Состав</th><th>Телефон</th><th>Амплуа</th><th>Тип участия</th><th></th></tr>
+  ${[...D.players].sort((a,b)=>(a.squad||'1').localeCompare(b.squad||'1')||a.last.localeCompare(b.last)).map(p=>`<tr><td>${hasNum(p)?p.num:'<span class="mut">—</span>'}</td><td><b>${esc(pname(p))}</b>${capMark(p)}</td><td>${p.birth?fbirth(p.birth)+' <span class="mut">('+age(p.birth)+')</span>':'—'}</td><td class="r">${p.height||'—'}</td><td class="r">${p.weight||'—'}</td><td><select class="plSq" data-id="${p.id}" style="background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px"><option value="1"${(p.squad||'1')==='1'?' selected':''}>1-й</option><option value="2"${p.squad==='2'?' selected':''}>2-й</option></select></td><td>${esc(p.phone||'')}</td><td>${POS[p.pos]}</td><td><select class="plType" data-id="${p.id}" style="background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px">${Object.entries(TYPES).map(([k,t])=>`<option value="${k}"${p.type===k?' selected':''}>${t}</option>`).join('')}</select></td><td><button class="btn sec sm" data-act="plEdit" data-id="${p.id}">Изменить</button> <button class="btn sec sm" data-act="payHist" data-id="${p.id}">Платежи</button> <button class="btn sec sm" data-act="invite" data-id="${p.id}">${p.pwh?'Сбросить пароль':'Приглашение'}</button>${p.pwh?' <span class="nk ok" title="Игрок задал пароль">вход настроен</span>':''} <button class="btn del sm" data-act="plDel" data-id="${p.id}">Удалить</button></td></tr>`).join('')}</table></div>
+  <p class="note">Тип участия подставляется в форму оплаты по умолчанию. Абонемент начинает действовать с даты оплаты — запишите её во вкладке «Оплаты».</p></div>
+  <div class="card" style="margin-top:16px"><h3>Тренеры</h3><p class="note" style="margin-top:2px">Тренер видит заявки, отмечает посещения, ведёт календарь, заметки по игрокам и планы тренировок и игр. Оплаты и балансы ему не видны.</p>
+  <form class="form" id="coForm" style="margin-top:12px">
+  <label>Фамилия<input name="last" required></label><label>Имя<input name="first" required></label><label>Отчество<input name="mid"></label>
+  <label>Должность<input name="role" value="Тренер" required></label>
+  <label>Отвечает за<select name="squad">${[['all',SQ.all],['1',SQ['1']],['2',SQ['2']]].map(([k,t])=>`<option value="${k}">${t}</option>`).join('')}</select></label>
+  <label>Телефон<input name="phone" type="tel" placeholder="+7 ___ ___-__-__" required></label>
+  <label class="w2">О тренере<input name="about" placeholder="Опыт, где играл — покажется на странице «Состав»"></label>
+  <button class="btn" type="submit">Добавить тренера</button></form>
+  ${D.coaches.length?`<div class="tw" style="margin-top:14px"><table><tr><th>Тренер</th><th>Должность</th><th>Отвечает за</th><th>Телефон</th><th></th></tr>${D.coaches.map(c=>`<tr><td><b>${esc(c.last+' '+c.first+(c.mid?' '+c.mid:''))}</b></td><td>${esc(c.role)}</td><td>${sqBadge(c.squad||'all')}</td><td>${esc(c.phone)}</td><td><button class="btn sec sm" data-act="coInv" data-id="${c.id}">${c.pwh?'Сбросить пароль':'Приглашение'}</button>${c.pwh?' <span class="nk ok">вход настроен</span>':''} <button class="btn del sm" data-act="coDel" data-id="${c.id}">Удалить</button></td></tr>`).join('')}</table></div>`:''}</div>`;
+}
+let repM=CUR;
+function tRep(){
+  const months=[...new Set(D.events.map(e=>e.date.slice(0,7)))].filter(m=>m<=CUR).sort().reverse();
+  if(!months.includes(repM))repM=months[0]||CUR;
+  const tr=sorted().filter(e=>e.type==='training'&&e.date.startsWith(repM)&&e.date<=TODAY);
+  const paid=D.payments.filter(x=>x.date.startsWith(repM)).reduce((s,x)=>s+x.amount,0);
+  const charged=D.players.reduce((s,p)=>s-ledger(p).out.filter(x=>x.a<0&&x.date.startsWith(repM)).reduce((t,x)=>t+x.a,0),0);
+  const avg=tr.length?Math.round(tr.reduce((s,e)=>s+(D.att[e.id]||[]).length,0)/tr.length):0;
+  return `<div class="form" style="grid-template-columns:240px;margin-bottom:16px"><label>Месяц<select id="repSel">${months.map(m=>`<option value="${m}"${m===repM?' selected':''}>${mname(m)}</option>`).join('')}</select></label></div>
+  <div class="grid4"><div class="card"><p>Тренировок</p><div class="big">${tr.length}</div></div><div class="card"><p>В среднем на тренировке</p><div class="big">${avg}</div></div><div class="card"><p>Начислено</p><div class="big">${money(charged)}</div></div><div class="card"><p>Собрано</p><div class="big ok">${money(paid)}</div></div></div>
+  <div class="card" style="margin-top:16px"><h3>Посещаемость</h3><div class="tw" style="margin-top:12px"><table><tr><th>Дата</th><th class="r">Пришло</th><th>Кто</th></tr>${tr.map(e=>`<tr><td>${fdate(e.date)}, ${fdow(e.date)}</td><td class="r">${(D.att[e.id]||[]).length}</td><td style="white-space:normal">${(D.att[e.id]||[]).map(id=>esc(player(id)?.last||'')).join(', ')}</td></tr>`).join('')||'<tr><td colspan="3">Нет тренировок</td></tr>'}</table></div></div>`;
+}
+function tSet(){
+  const S=D.settings;
+  return `<div class="card"><h3>Цены и правила</h3><form class="form" id="setForm" style="margin-top:12px">
+  <label>Разовая, ₽<input name="single" type="number" min="0" value="${S.single}"></label>
+  <label>Абонемент в месяц, ₽<input name="sub" type="number" min="0" value="${S.sub}"></label>
+  <label>Аренда экипировки, ₽<input name="rent" type="number" min="0" value="${S.rent}"></label>
+  <button class="btn" type="submit">Сохранить</button></form>
+  <p class="note">Абонемент — за календарный месяц: оплаченный месяц покрывает все тренировки этого месяца, сколько бы их ни было. При записи оплаты отмечаются месяцы, за которые она; дата — просто факт получения денег. Если игрок с абонементом тренировался в неоплаченном месяце, ему начисляется долг за этот месяц. Игроки с разовой оплатой платят за каждую тренировку.</p></div>
+  <div class="card" style="margin-top:16px"><h3>Демо-данные</h3><p>Вернуть условные данные к исходному виду.</p><button class="btn del" data-act="reset" style="margin-top:12px">Сбросить демо</button></div>`;
+}
+
+/* ═══ рендер и события ═══ */
+const $=id=>document.getElementById(id);
+/* ═══ приглашения и пароли ═══ */
+// Демо: ссылка ведёт на этот же файл (#invite/код), пароль хранится в браузере в виде хэша.
+// В рабочей версии коды и пароли живут на сервере, и ссылка открывается с любого телефона.
+D.invites=D.invites||{};
+const pwHash=pw=>{let h=2166136261;for(const ch of 'sparta:'+pw){h^=ch.codePointAt(0);h=Math.imul(h,16777619)}return (h>>>0).toString(36)};
+const whoOf=iv=>iv.pid?player(iv.pid):coach(iv.cid);
+function makeInvite(kind,id){Object.keys(D.invites).forEach(k=>{const iv=D.invites[k];if(iv[kind]===id)delete D.invites[k]});   // старые ссылки этого человека гаснут
+  const code=uid()+uid()+uid();D.invites[code]={[kind]:id,date:TODAY};save();return location.href.split('#')[0]+'#invite/'+code}
+function inviteModal(kind,id){const x=kind==='pid'?player(id):coach(id);if(!x)return;const link=makeInvite(kind,id),has=!!x.pwh;
+  modal(`<h2>${has?'Сброс пароля':'Приглашение'}${kind==='cid'?' тренеру':''}</h2><p style="margin-top:6px">Отправьте <b style="color:var(--ink)">${esc(x.last+' '+x.first)}</b> эту ссылку в WhatsApp, Telegram или SMS.</p>
+  <div class="card" style="margin-top:14px;word-break:break-all;font-size:14px;color:var(--ink)" id="invLink">${esc(link)}</div>
+  <div class="row" style="margin-top:12px"><button class="btn sm" data-act="invCopy">Скопировать ссылку</button><a class="btn sec sm" href="${esc(link)}" target="_blank" rel="noopener">Открыть как ${kind==='pid'?'игрок':'тренер'}</a></div>
+  <p class="note">По ссылке ${kind==='pid'?'игрок':'тренер'} придумает пароль${has?' (старый перестанет работать)':''} и дальше будет входить по номеру <b style="color:var(--ink)">${esc(x.phone||'')}</b>. Ссылка одноразовая; новая ссылка отменяет прежнюю.</p>
+  <p class="note"><b>В демо</b> ссылка работает только в этом браузере — откройте её здесь, чтобы пройти путь игрока. В рабочей версии она откроется на любом телефоне.</p>`)}
+function invitePage(code){const iv=D.invites[code],x=iv&&whoOf(iv);
+  if(!x)return `<section class="wrap sec-pad"><div class="card" style="max-width:480px;margin:0 auto;text-align:center"><h2>Ссылка недействительна</h2><p style="margin-top:8px">Её уже использовали или капитан отправил новую. Попросите капитана прислать свежее приглашение.</p><div class="row" style="justify-content:center;margin-top:16px"><a class="btn sec" href="#home">На главную</a><button class="btn" data-act="login">Войти</button></div></div></section>`;
+  return `<section class="wrap sec-pad"><div class="card" style="max-width:480px;margin:0 auto"><p class="tag">Приглашение</p><h2 style="margin-top:12px">${esc(x.first)}, добро пожаловать в ХК «Спарта»!</h2>
+  <p style="margin-top:8px">${iv.pid?'Капитан добавил вас в состав.':'Капитан добавил вас тренером команды.'} Придумайте пароль — и сразу попадёте в ${iv.pid?'личный кабинет':'панель тренера'}.</p>
+  <form class="form" id="invForm" data-code="${esc(code)}" style="grid-template-columns:1fr;margin-top:16px">
+   <label>Ваш логин — телефон<input value="${esc(x.phone||'')}" disabled></label>
+   <label>Придумайте пароль<input name="pw" type="password" minlength="6" required autocomplete="new-password" placeholder="Не меньше 6 символов"></label>
+   <label>Повторите пароль<input name="pw2" type="password" minlength="6" required autocomplete="new-password"></label>
+   <p class="bad" id="invErr" style="display:none;font-size:14px"></p>
+   <button class="btn" type="submit">Сохранить и войти</button></form>
+  ${U?`<p class="note">Сейчас на этом устройстве выполнен вход как ${U.role==='admin'?'капитан':U.role==='coach'?'тренер':'игрок'} — после сохранения войдёте как ${esc(x.first)}.</p>`:''}</div></section>`}
+
+/* ═══ турниры и документы ═══ */
+// Турнир — на сезон: несколько игр. Игрок один раз отмечает участие и один раз сдаёт документы → допуск ко всем играм турнира.
+// Список по Регламенту регионального этапа XVI фестиваля НХЛ, сезон 2026/27 (ст. о заявке хоккеиста, п. 3.2–3.9; прил. 7)
+const NHL_DOCS=[
+  {id:'pass',t:'Паспорт',hint:'Разворот с фотографией и страница с регистрацией. Фото или скан не меньше 1000 px по длинной стороне',nhl:1},
+  {id:'zay',t:'Заявка хоккеиста',hint:'Бланк лиги на текущий сезон: заполнить и подписать от руки',url:'https://nhliga.org/data/documents/download/doc_1_u-1_1_28072026_121818.docx',nhl:1},
+  {id:'consent',t:'Согласие участника',hint:'Согласие на обработку персональных данных по бланку лиги, подписанное. Оригинал — капитану',url:'https://nhliga.org/data/documents/download/doc_4_u-1_1_28072026_121818.docx',nhl:1},
+  {id:'med',t:'Медицинское заключение',hint:'О допуске к физкультурным мероприятиям по хоккею: подпись врача и печать клиники с лицензией. Должно действовать весь чемпионат',exp:true,url:'https://nhliga.org/data/documents/download/doc_9_u-1_1_28072026_121818.docx',nhl:1},
+  {id:'ins',t:'Страховой полис',hint:'Страхование жизни и здоровья от несчастных случаев, покрывает занятия хоккеем на весь период чемпионата',exp:true,nhl:1},
+  {id:'photo',t:'Фото для заявки',hint:'Цветное, белый фон, анфас в игровом свитере команды, без шлема и очков, от 600×800 px, сделано не раньше чем за год',nhl:1},
+  {id:'fee',t:'Индивидуальная плата за участие',hint:'Взнос в лигу за участие в чемпионате: квитанция или отметка капитана',nhl:1},
+  {id:'sign',t:'Подпись в заявочном листе',hint:'Расписаться лично у капитана напротив своей фамилии',paper:true,nhl:1}];
+let DOCT={};const syncDocT=()=>{DOCT=Object.fromEntries(D.doctypes.map(d=>[d.id,d]))};
+const DSTX={none:['Не сдано','bad'],exp:['Истёк срок','bad'],sent:['На проверке','warn'],paper:['Принесёт лично','warn'],ok:['Принято','ok'],bad:['Отклонено','bad']};
+const DIC={none:'—',exp:'⌛',sent:'👁',paper:'✋',ok:'✓',bad:'✗'};
+const tourOf=e=>e&&e.type==='game'&&e.tid?D.tours.find(t=>t.id===e.tid)||null:null;
+const tGames=t=>sorted().filter(e=>e.tid===t.id);
+const tEnd=t=>{const g=tGames(t);return g.length?g[g.length-1].date:(t.due||TODAY)};
+const tPlayers=t=>D.players.filter(p=>gameOk(p)&&(t.squad==='all'||(p.squad||'1')===t.squad));
+const partOf=(t,pid)=>(D.tpart[t.id]||{})[pid]||'';
+const docOf=(t,pid,k)=>((D.tdocs[t.id]||{})[pid]||{})[k];
+function docSt(t,pid,k){const d=docOf(t,pid,k);if(!d||!d.status||d.status==='none')return 'none';if(d.status==='ok'&&DOCT[k].exp&&d.until&&d.until<tEnd(t))return 'exp';return d.status}
+const tMiss=(t,pid)=>t.docs.filter(k=>docSt(t,pid,k)!=='ok');
+const admitted=(t,pid)=>partOf(t,pid)==='yes'&&!tMiss(t,pid).length;
+const tourOk=(e,pid)=>{const t=tourOf(e);return !t||admitted(t,pid)};
+const activeTours=()=>D.tours.filter(t=>tEnd(t)>=TODAY);
+const toursNeed=pid=>activeTours().filter(t=>tPlayers(t).some(p=>p.id===pid)&&(!partOf(t,pid)||partOf(t,pid)==='yes'&&tMiss(t,pid).length));
+const dbox=(t,pid)=>{const a=D.tdocs[t.id]=D.tdocs[t.id]||{};return a[pid]=a[pid]||{}};
+const plural=(n,a,b,c)=>{const x=n%10,y=n%100;return x===1&&y!==11?a:x>=2&&x<=4&&(y<10||y>=20)?b:c};
+D.tours=D.tours||[];D.tpart=D.tpart||{};D.tdocs=D.tdocs||{};
+if(!D.doctypes){D.doctypes=NHL_DOCS.map(d=>({...d}));   // старый тип «Заявка / согласие лиги» → «Заявка хоккеиста»
+  D.tours.forEach(t=>{t.docs=t.docs.map(k=>k==='app'?'zay':k)});Object.values(D.tdocs).forEach(a=>Object.values(a).forEach(b=>{if(b.app){b.zay=b.app;delete b.app}}))}
+syncDocT();D.tours.forEach(t=>{t.docs=t.docs.filter(k=>DOCT[k])});
+D.events.forEach(e=>{delete e.tour});delete D.docs;delete D.docSeed;   // старая схема «документы к каждой игре»
+if(!D.tourSeed){D.tourSeed=1;   // демо: турнир сезона, все будущие игры — его
+  const y0=+TODAY.slice(0,4),season=+TODAY.slice(5,7)>=8?y0+'/'+String(y0+1).slice(2):(y0-1)+'/'+String(y0).slice(2);
+  const t={id:uid(),name:'Кубок любительской лиги '+season,squad:'all',due:iso(new Date(Date.now()+10*864e5)),fee:3000,docs:NHL_DOCS.map(d=>d.id)};
+  D.tours.push(t);D.events.forEach(e=>{if(e.type==='game'&&e.date>=TODAY)e.tid=t.id});
+  const y=(y0+1)+TODAY.slice(4),ok=u=>({file:'',name:'',date:TODAY,until:u||'',status:'ok',note:''}),ps=tPlayers(t);
+  if(ps[0]){D.tpart[t.id]={[ps[0].id]:'yes'};D.tdocs[t.id]={[ps[0].id]:{med:ok(y),pass:ok(),ins:ok(y),fee:ok()}}}
+  if(ps[1]){D.tpart[t.id][ps[1].id]='yes';D.tdocs[t.id][ps[1].id]={med:ok(y),pass:{file:'',name:'',date:TODAY,until:'',status:'paper',note:''}}}
+  if(ps[2])D.tpart[t.id][ps[2].id]='no';
+  save()}
+function readDoc(f){return new Promise((ok,no)=>{const r=new FileReader();
+  if(f.type==='application/pdf'){if(f.size>1.5e6)return no('PDF больше 1,5 МБ — лучше сфотографируйте документ');r.onload=()=>ok(r.result);r.readAsDataURL(f);return}
+  if(!f.type.startsWith('image/'))return no('Нужно фото или PDF');
+  r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.75))};im.onerror=()=>no('Не удалось открыть фото — попробуйте JPG или PDF');im.src=r.result};
+  r.readAsDataURL(f)})}
+function docRow(t,pid,k){const s=docSt(t,pid,k),d=docOf(t,pid,k),[tt,c]=DSTX[s],T=DOCT[k];
+  const act=s==='ok'?'':T.paper?(s!=='paper'?`<button class="btn sec sm" data-act="docPaper" data-id="${k}" data-t="${t.id}">Сделаю лично</button>`:'')
+    :`${T.exp?`<label style="font-size:12px;color:var(--mut)">действует до <input type="date" class="docUntil" id="du_${t.id}_${k}" style="width:150px;display:inline-block;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px;font:inherit;font-size:14px"></label>`:''}<label class="btn sec sm" style="cursor:pointer">📷 Загрузить<input type="file" accept="image/*,application/pdf" class="docUp" data-k="${k}" data-t="${t.id}" hidden></label>${s!=='paper'?`<button class="btn sec sm" data-act="docPaper" data-id="${k}" data-t="${t.id}">Принесу лично</button>`:''}`;
+  return `<div class="chk" style="cursor:default;flex-wrap:wrap"><span style="flex:1;min-width:200px;color:var(--ink)">${esc(T.t)}${k==='fee'&&t.fee?' · '+money(t.fee):''}${d&&d.until?` <span class="mut" style="font-size:12px">до ${fbirth(d.until)}</span>`:''}${T.hint?`<br><span class="mut" style="font-size:12px">${esc(T.hint)}</span>`:''}${T.url?` <a href="${esc(T.url)}" target="_blank" rel="noopener" style="font-size:12px;color:var(--ac2);white-space:nowrap">скачать бланк ↓</a>`:''}${s==='bad'&&d.note?`<br><span class="bad" style="font-size:13px">${esc(d.note)}</span>`:''}${s==='exp'?`<br><span class="bad" style="font-size:13px">Закончится раньше последней игры турнира (${fdate(tEnd(t))})</span>`:''}</span><span class="nk ${c}">${tt}</span>${act}</div>`}
+function docsBlock(p){const T=activeTours().filter(t=>tPlayers(t).some(x=>x.id===p.id));if(!T.length)return '';
+  return T.map((t,i)=>{const pt=partOf(t,p.id),miss=tMiss(t,p.id),g=tGames(t).filter(e=>e.date>=TODAY);
+    return `<div class="card"${i?'':' id="docs-box"'} style="margin-bottom:16px;border-color:#fbbf2466"><h3>🏆 ${esc(t.name)}</h3>
+    <p style="margin-top:4px">${g.length?'Впереди '+g.length+' '+plural(g.length,'игра','игры','игр')+' турнира, первая — '+fdate(g[0].date):'Игры турнира ещё не в календаре'}${t.due?' · документы сдать до <b style="color:var(--ink)">'+fdate(t.due)+'</b>':''}</p>
+    <p style="margin-top:12px;color:var(--ink);font-weight:700">Участвуете в турнире?</p>
+    <div class="rsvp"><button class="r-yes${pt==='yes'?' on':''}" data-act="tPart" data-id="${t.id}" data-v="yes">Участвую</button><button class="r-no${pt==='no'?' on':''}" data-act="tPart" data-id="${t.id}" data-v="no">Не участвую</button></div>
+    ${pt==='yes'?`<p class="${miss.length?'bad':'ok'}" style="font-weight:700;margin-top:14px">${miss.length?'Допуска пока нет — не хватает '+miss.length+' из '+t.docs.length:'✓ Допуск получен — отмечайтесь «Буду» на игры турнира'}</p>
+      <div class="tw" style="margin-top:8px">${t.docs.map(k=>docRow(t,p.id,k)).join('')}</div>
+      <p class="note">Документы сдаются <b>один раз на весь турнир</b>. Сфотографируйте документ или загрузите PDF — капитан и тренер проверят.</p>`
+    :pt==='no'?'<p class="note">Вы отказались от участия. Передумаете — нажмите «Участвую».</p>':'<p class="note">Нажмите «Участвую» — появится список документов. После их проверки вы получите допуск ко всем играм турнира.</p>'}</div>`}).join('')}
+let tourSel=null,tourEdit=false;
+function tourForm(t){
+  const games=sorted().filter(e=>e.type==='game'&&(e.date>=TODAY||(t&&e.tid===t.id)));
+  return `<div class="card"${t?' style="border-color:var(--ac2)"':''}><h3>${t?'Изменить турнир':'Новый турнир'}</h3><form class="form" id="tourForm" style="margin-top:12px">
+  <label class="w2">Название<input name="name" required value="${t?esc(t.name):''}" placeholder="Кубок любительской лиги 2026/27"></label>
+  <label>Кто играет<select name="squad">${[['all',SQ.all],['1',SQ['1']],['2',SQ['2']]].map(([k,x])=>`<option value="${k}"${(t?t.squad:'all')===k?' selected':''}>${x}</option>`).join('')}</select></label>
+  <label>Документы сдать до<input name="due" type="date" value="${t?esc(t.due||''):''}"></label>
+  <label>Взнос с игрока, ₽<input name="fee" type="number" min="0" value="${t&&t.fee?t.fee:''}"></label>
+  <div class="w4"><p class="mut" style="font-size:13px;font-weight:700;margin-bottom:6px">Какие документы нужны для допуска</p><div class="row" style="gap:16px">${Object.entries(DOCT).map(([k,d])=>`<label class="sw" style="gap:6px;font-size:14px"><input type="checkbox" name="doc_${k}"${(t?t.docs.includes(k):!!d.nhl)?' checked':''}> ${esc(d.t)}</label>`).join('')}</div>
+  <div class="row" style="margin-top:8px"><button class="btn sec sm" type="button" data-act="tourNhl">Отметить всё по регламенту НХЛ</button><span class="note" style="margin:0">Нужен свой документ — добавьте его в «Справочник документов» ниже.</span></div></div>
+  <div class="w4"><p class="mut" style="font-size:13px;font-weight:700;margin-bottom:6px">Игры турнира</p>${games.length?`<div class="tw">${games.map(e=>{const o=e.tid&&(!t||e.tid!==t.id)?D.tours.find(x=>x.id===e.tid):null;return `<label class="chk" style="margin:0;font-weight:600;color:var(--ink)"><input type="checkbox" name="g_${e.id}" style="width:18px;margin:0;flex:none"${t&&e.tid===t.id||!t&&!e.tid?' checked':''}> ${fdate(e.date)}, ${fdow(e.date)} — «${esc(e.opp)}» <span class="mut" style="font-weight:400">· ${SQ[sqOf(e)]}${o?' · сейчас в «'+esc(o.name)+'»':''}</span></label>`}).join('')}</div>`:'<p class="note">Игр в календаре нет — добавьте их во вкладке «События».</p>'}</div>
+  <div class="row w4"><button class="btn" type="submit">${t?'Сохранить':'Создать турнир'}</button>${D.tours.length?'<button class="btn sec sm" type="button" data-act="tourCancel">Отмена</button>':''}${t?'<button class="btn del sm" type="button" data-act="tourDel">Удалить турнир</button>':''}</div></form></div>`}
+let dtEdit=null;
+function tDocs(){const main=tDocsMain(),t=tourSel&&tourSel!=='new'?D.tours.find(x=>x.id===tourSel):null;return main+docTypesCard(t)}
+function docTypesCard(t){const e=dtEdit?DOCT[dtEdit]:null;
+  return `<div class="card" style="margin-top:16px" id="dt-box"><h3>Справочник документов</h3><p class="note" style="margin-top:2px">Документы, которые можно требовать в турнирах. Изначально — по регламенту Ночной хоккейной лиги 2026/27 (метка «НХЛ»). Добавляйте свои, правьте пояснения и ссылки на бланки.</p>
+  <div class="tw" style="margin-top:12px">${D.doctypes.map(d=>`<div class="chk" style="cursor:default;flex-wrap:wrap"><span style="flex:1;min-width:200px"><b style="color:var(--ink)">${esc(d.t)}</b>${d.nhl?' <span class="badge">НХЛ</span>':''}${d.exp?' <span class="badge">со сроком</span>':''}${d.paper?' <span class="badge">только лично</span>':''}${t&&t.docs.includes(d.id)?' <span class="nk ok">в турнире</span>':''}${d.hint?`<br><span class="mut" style="font-size:13px">${esc(d.hint)}</span>`:''}${d.url?` <a href="${esc(d.url)}" target="_blank" rel="noopener" style="font-size:13px;color:var(--ac2)">бланк</a>`:''}</span><button class="btn sec sm" data-act="dtEdit" data-id="${d.id}">Изменить</button><button class="btn del sm" data-act="dtDel" data-id="${d.id}">Удалить</button></div>`).join('')||'<p class="note" style="padding:0 12px">Справочник пуст.</p>'}</div>
+  <form class="form" id="dtForm" style="margin-top:16px"${e?` data-id="${e.id}"`:''}><p class="w4" style="font-weight:800;color:var(--ink)">${e?'Изменить: '+esc(e.t):'+ Добавить документ'}</p>
+  <label class="w2">Название<input name="t" required maxlength="80" value="${e?esc(e.t):''}" placeholder="Например: Справка с места работы"></label>
+  <label class="w2">Ссылка на бланк (если есть)<input name="url" value="${e?esc(e.url||''):''}" placeholder="https://…"></label>
+  <label class="w4">Пояснение для игрока<input name="hint" maxlength="240" value="${e?esc(e.hint||''):''}" placeholder="Что именно принести и в каком виде"></label>
+  <label class="sw w2" style="gap:8px"><input type="checkbox" name="exp"${e&&e.exp?' checked':''}> Есть срок действия — игрок укажет «действует до»</label>
+  <label class="sw w2" style="gap:8px"><input type="checkbox" name="paper"${e&&e.paper?' checked':''}> Только лично, без загрузки скана</label>
+  ${!e&&t?`<label class="sw w4" style="gap:8px"><input type="checkbox" name="addTour" checked> Сразу требовать в турнире «${esc(t.name)}»</label>`:''}
+  <div class="row w4"><button class="btn" type="submit">${e?'Сохранить':'Добавить документ'}</button>${e?'<button class="btn sec sm" type="button" data-act="dtCancel">Отмена</button>':''}</div></form></div>`}
+function tDocsMain(){
+  if(!D.tours.length||tourSel==='new')return (D.tours.length?'':'<p class="note" style="margin:0 0 14px">Создайте турнир сезона: какие документы нужны и какие игры в него входят. Игроки отметят участие и загрузят документы в кабинете.</p>')+tourForm(null);
+  if(!tourSel||!D.tours.find(t=>t.id===tourSel))tourSel=(activeTours()[0]||D.tours[D.tours.length-1]).id;
+  const t=D.tours.find(x=>x.id===tourSel);
+  if(tourEdit)return tourForm(t);
+  const ps=tPlayers(t),PO={yes:0,'':1,no:2},rows=[...ps].sort((a,b)=>PO[partOf(t,a.id)]-PO[partOf(t,b.id)]||a.last.localeCompare(b.last)),
+    yes=ps.filter(p=>partOf(t,p.id)==='yes'),adm=yes.filter(p=>admitted(t,p.id)),none=ps.filter(p=>!partOf(t,p.id)),
+    wait=yes.reduce((n,p)=>n+t.docs.filter(k=>['sent','paper'].includes(docSt(t,p.id,k))).length,0),g=tGames(t);
+  const cell=(p,k)=>{if(partOf(t,p.id)!=='yes')return '<td class="mut">—</td>';const s=docSt(t,p.id,k);return `<td><button class="nk ${DSTX[s][1]}" style="border:0;cursor:pointer;font-family:inherit" data-act="docView" data-id="${p.id}" data-k="${k}">${DIC[s]} ${DSTX[s][0]}</button></td>`};
+  return `<div class="card"><div class="row"><div class="form" style="grid-template-columns:1fr;flex:1;min-width:220px"><label>Турнир<select id="tourSel">${D.tours.map(x=>`<option value="${x.id}"${x.id===t.id?' selected':''}>${esc(x.name)}</option>`).join('')}</select></label></div>
+   <button class="btn sec sm" data-act="tourEdit">Изменить</button><button class="btn sec sm" data-act="tourNew">+ Новый турнир</button></div>
+   <p class="note">${SQ[t.squad]} · ${g.length?g.length+' '+plural(g.length,'игра','игры','игр')+': '+g.map(e=>fdate(e.date)).join(', '):'игры не выбраны'}${t.due?' · документы до <b style="color:var(--ink)">'+fdate(t.due)+'</b>'+(t.due<TODAY?' <b class="bad">(срок прошёл)</b>':''):''}${t.fee?' · взнос '+money(t.fee):''}</p>
+   <p class="note">Требуется: ${t.docs.map(k=>esc(DOCT[k].t.toLowerCase())).join(', ')}. На игры турнира могут отметиться только допущенные.</p></div>
+  <div class="kpis" style="margin-top:16px"><div class="card"><p>Участвуют</p><div class="big">${yes.length} <span class="mut" style="font-size:22px">из ${ps.length}</span></div><p>не ответили: ${none.length}</p></div><div class="card"><p>Допущены</p><div class="big ok">${adm.length}</div><p>все документы приняты</p></div><div class="card"><p>Ждут проверки</p><div class="big" style="color:#fbbf24">${wait}</div><p>документов загружено или принесут лично</p></div></div>
+  <div class="card" style="margin-top:16px"><h3>Кто что сдал</h3><div class="tw" style="margin-top:12px"><table><tr><th>Игрок</th><th>Участие</th>${t.docs.map(k=>`<th>${esc(DOCT[k].t)}</th>`).join('')}<th>Допуск</th></tr>${rows.map(p=>{const pt=partOf(t,p.id);return `<tr${pt==='no'?' style="opacity:.55"':''}><td><b>${esc(p.last)} ${esc(p.first)}</b> <span class="mut">${numT(p)}</span></td><td><select class="tpSel" data-pid="${p.id}" style="background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px"><option value="">не ответил</option><option value="yes"${pt==='yes'?' selected':''}>участвует</option><option value="no"${pt==='no'?' selected':''}>не участвует</option></select></td>${t.docs.map(k=>cell(p,k)).join('')}<td>${pt!=='yes'?'<span class="mut">—</span>':admitted(t,p.id)?'<span class="nk ok">✓ Допущен</span>':'<span class="nk bad">Нет</span>'}</td></tr>`}).join('')||`<tr><td colspan="${t.docs.length+3}" class="mut">Нет игроков с абонементом в этом составе</td></tr>`}</table></div>
+  <p class="note">Нажмите на статус документа: откроется скан — примите или отклоните с причиной. Принесённое на бумаге отмечается там же. Участие можно отметить за игрока, если он сказал об этом лично. В списке — игроки с абонементом: разовым игры недоступны.</p></div>
+  ${yes.length>adm.length?`<div class="card" style="margin-top:16px"><h3>Чего не хватает</h3>${yes.filter(p=>!admitted(t,p.id)).map(p=>`<p style="margin-top:8px"><b style="color:var(--ink)">${esc(pname(p))}</b>: ${tMiss(t,p.id).map(k=>esc(DOCT[k].t.toLowerCase())+' <span class="mut">('+DSTX[docSt(t,p.id,k)][0].toLowerCase()+')</span>').join(', ')}</p>`).join('')}</div>`:''}
+  ${none.length?`<div class="card" style="margin-top:16px"><h3>Не ответили про участие</h3><p style="margin-top:6px;color:var(--ink)">${none.map(p=>esc(p.last)+' '+esc(p.first)).join(', ')}</p></div>`:''}`;
+}
+
+/* ═══ заметки и планы тренера ═══ */
+const NK={todo:['Подтянуть','warn'],minus:['Минус','bad'],plus:['Плюс','ok']};
+const VIS={coach:'🔒 Только тренеру',player:'👤 Видит игрок',team:'👥 Видит команда'};
+const plan=eid=>D.plans[eid]=D.plans[eid]||{drills:[],opp:'',tactic:'',lines:{},after:[],pub:false,afterPub:false};
+const hasPlan=eid=>{const q=D.plans[eid];return !!q&&!!(q.drills.length||q.opp||q.tactic||Object.values(q.lines).some(Boolean)||q.after.length)};
+const nextTraining=e=>sorted().find(x=>x.type==='training'&&x.date>e.date&&x.date>=TODAY);
+const pubRow=(act,on)=>`<div class="row" style="margin-top:14px"><span class="badge">${on?VIS.team:VIS.coach}</span><button class="btn sm${on?' sec':''}" data-act="${act}">${on?'Скрыть от команды':'Показать команде'}</button></div>`;
+D.plans=D.plans||{};
+D.drillLib=D.drillLib||[{text:'Разминка: катание с ускорениями',min:10},{text:'Выход из зоны в 3 паса',min:15},{text:'Большинство 5×4: расстановка и броски',min:15},{text:'Меньшинство 4×5: «ромб», выбивание',min:10},{text:'Вбрасывания: центр + выход в атаку',min:10},{text:'Броски с ходу с неудобной руки',min:10},{text:'Двусторонняя игра',min:20}];
+if(!D.notes){D.notes={};const[a,b]=D.players;   // демо-примеры
+  if(a)D.notes[a.id]=[{id:uid(),date:TODAY,kind:'plus',vis:'coach',text:'Хорошо видит поле, точный первый пас',done:false},{id:uid(),date:TODAY,kind:'minus',vis:'coach',text:'Поздно возвращается в оборону после потери',done:false},{id:uid(),date:TODAY,kind:'todo',vis:'player',text:'Торможение на правую ногу — терять меньше скорости в повороте',done:false}];
+  if(b)D.notes[b.id]=[{id:uid(),date:TODAY,kind:'todo',vis:'player',text:'Бросок с ходу: не останавливаться перед броском',done:false}];
+  const tr=sorted().find(x=>x.type==='training'&&x.date>=TODAY),gm=sorted().find(x=>x.type==='game'&&x.date>=TODAY);
+  if(tr&&!D.plans[tr.id])D.plans[tr.id]={drills:[0,1,6].map(i=>({id:uid(),...D.drillLib[i]})),opp:'',tactic:'',lines:{},after:[],pub:true,afterPub:false};
+  if(gm&&!D.plans[gm.id])D.plans[gm.id]={drills:[],opp:'Быстрые нападающие, слабо играют в своей зоне при прессинге.',tactic:'Плотный форчекинг первым игроком, защитники не проваливаются в центр. Выход из зоны — через борт.',lines:{1:'Давить на защитников соперника',2:'Надёжно в обороне, не терять шайбу у синей'},after:[],pub:false,afterPub:false};
+  save()}
+let pnP=null;
+function tPn(){
+  const ps=[...D.players].sort((a,b)=>(a.squad||'1').localeCompare(b.squad||'1')||a.last.localeCompare(b.last));
+  if(!ps.length)return '<div class="card"><p>Игроков пока нет</p></div>';
+  if(!pnP||!player(pnP))pnP=ps[0].id;
+  const p=player(pnP), N=D.notes[p.id]||[];
+  const list=ps.map(x=>{const n=D.notes[x.id]||[],t=n.filter(y=>y.kind==='todo'&&!y.done).length;return `<div class="chk${x.id===pnP?' on':''}" data-act="pnSel" data-id="${x.id}"><span class="mut" style="width:30px">${numT(x)}</span><span style="flex:1">${esc(x.last)} ${esc(x.first)}</span>${t?`<span class="nk warn">${t}</span>`:''}${n.length?`<span class="mut" style="font-size:12px">${n.length}</span>`:''}</div>`}).join('');
+  const item=n=>`<div class="nit"><div class="row" style="gap:6px"><span class="nk ${NK[n.kind][1]}">${NK[n.kind][0]}</span><span class="mut" style="font-size:12px">${fdate(n.date)}</span><span class="badge">${VIS[n.vis]}</span></div><p class="pre" style="color:var(--ink);margin:6px 0;${n.done?'text-decoration:line-through;opacity:.6':''}">${esc(n.text)}</p><div class="row" style="gap:6px">${n.kind==='todo'?`<button class="btn sec sm" data-act="pnDone" data-id="${n.id}">${n.done?'Вернуть в работу':'✓ Подтянул'}</button>`:''}<button class="btn sec sm" data-act="pnVis" data-id="${n.id}">${n.vis==='coach'?'Показать игроку':'Скрыть от игрока'}</button><button class="btn del sm" data-act="pnDel" data-id="${n.id}">Удалить</button></div></div>`;
+  const grp=Object.keys(NK).map(k=>{const L=N.filter(n=>n.kind===k).sort((a,b)=>(a.done-b.done)||b.date.localeCompare(a.date));return L.length?`<div class="grp" style="margin-top:14px;border-radius:8px">${NK[k][0]} · ${L.length}</div>${L.map(item).join('')}`:''}).join('');
+  return `<div class="grid3"><div class="card" style="padding:12px"><h3 style="padding:4px 8px 10px">Игроки</h3><div class="tw">${list}</div><p class="note" style="padding:0 8px">Жёлтая цифра — открытые задачи «Подтянуть», серая — всего заметок.</p></div>
+  <div class="card" style="grid-column:span 2"><div class="row"><span class="num">${hasNum(p)?p.num:'—'}</span><div><h3>${esc(pname(p))}</h3><p>${POS[p.pos]} · ${SQ[p.squad||'1']}</p></div></div>
+  <form class="form" id="pnForm" style="margin-top:14px"><label>Тип<select name="kind">${Object.entries(NK).map(([k,[t]])=>`<option value="${k}">${t}</option>`).join('')}</select></label>
+  <label>Кто видит<select name="vis"><option value="coach">${VIS.coach}</option><option value="player">${VIS.player}</option></select></label>
+  <label class="w4">Заметка<textarea name="text" rows="2" required placeholder="Например: торможение на правую ногу — терять меньше скорости в повороте"></textarea></label>
+  <div class="row w4"><button class="btn" type="submit">Добавить</button></div></form>
+  ${grp||'<p class="note">Заметок пока нет.</p>'}
+  <p class="note">«Видит игрок» — заметка появится у него в кабинете в блоке «От тренера». «Только тренеру» — видят только тренеры и капитан.</p></div></div>`;
+}
+let planEv=null;
+function tPlan(){
+  const from=iso(new Date(Date.now()-14*864e5)), list=sorted().filter(e=>e.date>=from).slice(0,16);
+  if(!list.length)return '<div class="card"><p>Событий нет — добавьте их во вкладке «События».</p></div>';
+  if(!planEv||!list.find(e=>e.id===planEv))planEv=(list.find(e=>e.date>=TODAY)||list[list.length-1]).id;
+  const e=D.events.find(x=>x.id===planEv), P=D.plans[e.id]||{drills:[],opp:'',tactic:'',lines:{},after:[]}, nt=nextTraining(e);
+  const sel=`<div class="card"><div class="form" style="grid-template-columns:1fr"><label>Событие<select id="planSel">${list.map(x=>`<option value="${x.id}"${x.id===planEv?' selected':''}>${fdate(x.date)}, ${fdow(x.date)} — ${x.type==='game'?'Игра · '+esc(x.opp):'Тренировка'} · ${SQ[sqOf(x)]}${x.date<TODAY?' (прошло)':''}${hasPlan(x.id)?' ✎':''}</option>`).join('')}</select></label></div><p class="note">✎ — план уже заполнен.</p></div>`;
+  const before=e.type==='game'
+   ?`<div class="card" style="margin-top:16px"><h3>Тактика на игру</h3><form class="form" id="tacForm" style="margin-top:12px">
+     <label class="w4">Соперник: сильные и слабые стороны, опасные игроки<textarea name="opp" rows="3">${esc(P.opp)}</textarea></label>
+     <label class="w4">Тактика и схема игры<textarea name="tactic" rows="4">${esc(P.tactic)}</textarea></label>
+     ${LINES.map(n=>`<label class="w2">Задача ${n}-му звену<input name="l${n}" value="${esc(P.lines[n]||'')}"></label>`).join('')}
+     <div class="row w4"><button class="btn" type="submit">Сохранить</button></div></form>${pubRow('planPub',P.pub)}</div>`
+   :`<div class="card" style="margin-top:16px"><h3>Что отрабатываем</h3>${P.drills.length?`<div class="tw" style="margin-top:12px">${P.drills.map((d,i)=>`<div class="chk" style="cursor:default"><span class="mut" style="width:22px">${i+1}.</span><span style="flex:1;white-space:normal">${esc(d.text)}</span>${d.min?`<span class="mut" style="white-space:nowrap">${d.min} мин</span>`:''}<button class="btn sec sm" data-act="drLib" data-id="${d.id}" title="Сохранить в шаблоны">★</button><button class="btn del sm" data-act="drDel" data-id="${d.id}">×</button></div>`).join('')}</div><p class="note">Всего: ${P.drills.reduce((s,d)=>s+(+d.min||0),0)} мин · ★ — сохранить упражнение в шаблоны</p>`:'<p class="note">Упражнений пока нет.</p>'}
+     <form class="form" id="drForm" style="margin-top:12px"><label class="w2">Упражнение<input name="text" required placeholder="Выход из зоны в 3 паса"></label><label>Минут<input name="min" type="number" min="1" max="120" value="10"></label><button class="btn" type="submit">Добавить</button>
+     <label class="w4">Или из шаблонов<select id="drLibSel"><option value="">— выбрать упражнение —</option>${D.drillLib.map((d,i)=>`<option value="${i}">${esc(d.text)} · ${d.min} мин</option>`).join('')}</select></label></form>${pubRow('planPub',P.pub)}</div>`;
+  const after=`<div class="card" style="margin-top:16px"><h3>${e.type==='game'?'Разбор игры':'Итог тренировки'}</h3>${e.date>TODAY?'<p class="note" style="margin-top:2px">Заполняется после события.</p>':''}
+   ${P.after.map(x=>`<div class="nit row" style="gap:8px"><span class="nk ${x.kind==='good'?'ok':'bad'}">${x.kind==='good'?'Сработало':'Повторить'}</span><span style="flex:1;color:var(--ink);min-width:140px">${esc(x.text)}</span>${x.moved?'<span class="mut" style="font-size:12px">✓ в плане тренировки</span>':`<button class="btn sec sm" data-act="afMove" data-id="${x.id}">→ В тренировку</button>`}<button class="btn del sm" data-act="afDel" data-id="${x.id}">×</button></div>`).join('')}
+   <form class="form" id="afForm" style="margin-top:12px"><label>Итог<select name="kind"><option value="bad">Не сработало, повторить</option><option value="good">Сработало</option></select></label><label class="w2">Что именно<input name="text" required placeholder="Терялись при выходе из зоны под прессингом"></label><button class="btn" type="submit">Добавить</button></form>
+   <p class="note">«→ В тренировку» добавит пункт в план ближайшей тренировки${nt?' — '+fdate(nt.date)+', '+fdow(nt.date):''}.</p>${pubRow('afterPub',P.afterPub)}</div>`;
+  return sel+before+after;
+}
+function planView(e){const P=D.plans[e.id];if(!U||!P)return '';let h='';
+  const sub=t=>`<p class="mut" style="margin-top:10px;font-weight:700;font-size:13px">${t}</p>`;
+  if(P.pub){if(e.type==='game'){const ln=LINES.filter(n=>P.lines[n]);if(P.opp||P.tactic||ln.length)h+=`<h3>Тактика на игру</h3>${P.opp?sub('Соперник')+`<p class="pre" style="color:var(--ink)">${esc(P.opp)}</p>`:''}${P.tactic?sub('Как играем')+`<p class="pre" style="color:var(--ink)">${esc(P.tactic)}</p>`:''}${ln.length?sub('Задачи звеньям')+ln.map(n=>`<p style="color:var(--ink)"><b>${n}-е:</b> ${esc(P.lines[n])}</p>`).join(''):''}`}
+    else if(P.drills.length)h+=`<h3>План тренировки</h3>${P.drills.map((d,i)=>`<p style="margin-top:6px;color:var(--ink)">${i+1}. ${esc(d.text)}${d.min?` <span class="mut">· ${d.min} мин</span>`:''}</p>`).join('')}`}
+  if(P.afterPub&&P.after.length)h+=`<h3${h?' style="margin-top:14px"':''}>${e.type==='game'?'Разбор игры':'Итог тренировки'}</h3>${P.after.map(x=>`<p style="margin-top:6px;color:var(--ink)"><span class="nk ${x.kind==='good'?'ok':'bad'}">${x.kind==='good'?'+':'−'}</span> ${esc(x.text)}</p>`).join('')}`;
+  return h?`<div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">${h}</div>`:''}
+function render(){
+  const r=(location.hash.slice(1)||'home');const page=PAGES[r]?r:'home';
+  const both=U&&U.role==='admin'&&capP(), nav=both?[...NAV,['admin','Панель капитана']]:NAV.map(x=>x[0]==='cabinet'&&isStaff()?['admin',U.role==='admin'?'Панель капитана':'Панель тренера']:x);
+  const dot=myPid()&&toursNeed(myPid()).length?' <span style="color:#fbbf24" title="Нужны документы на турнир">●</span>':'';
+  const links=nav.map(([k,t])=>`<a href="#${k}" class="${(k===page||(!both&&k==='cabinet'&&page==='admin'))?'on':''}">${t}${k==='cabinet'?dot:''}</a>`).join('');
+  $('nav').innerHTML=links;$('mnav').innerHTML=links;
+  $('who').innerHTML=U?`<span class="nm mut">${U.role==='admin'?'Капитан'+(capP()?' · '+esc(capP().last):''):U.role==='coach'?'Тренер':esc(pname(player(U.pid)))}</span><button class="btn sec sm" data-act="logout">Выйти</button>`:`<button class="btn sm" data-act="login">Войти</button>`;
+  $('app').innerHTML=r.startsWith('invite/')?invitePage(r.slice(7)):PAGES[page]();
+}
+function modal(html){$('mbody').innerHTML=html;$('modal').classList.add('on')}
+function closeModal(){$('modal').classList.remove('on');$('modal').querySelector('.box').style.maxWidth=''}
+function toast(t){const el=$('toast');el.textContent=t;el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('on'),1800)}
+
+document.addEventListener('click',ev=>{
+  const b=ev.target.closest('[data-act]');if(!b)return;
+  if(ev.target===$('modal')){closeModal();return}
+  const a=b.dataset.act,id=b.dataset.id;
+  if(a==='close')closeModal();
+  else if(a==='pnSel'){pnP=id;render()}
+  else if(a==='toDocs'){const el=$('docs-box');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+  else if(a==='tPart'){if(!myPid())return;(D.tpart[id]=D.tpart[id]||{})[myPid()]=b.dataset.v;save();toast(b.dataset.v==='yes'?'Вы в списке участников — сдайте документы':'Отмечено: не участвуете');render()}
+  else if(a==='docPaper'){if(!myPid())return;const t=D.tours.find(x=>x.id===b.dataset.t);if(!t)return;
+    dbox(t,myPid())[id]={file:'',name:'',date:TODAY,until:'',status:'paper',note:''};save();toast('Отмечено: принесёте лично');render()}
+  else if(a==='balInfo'){if(!U||U.role!=='admin')return;const p=player(id);if(!p)return;const L=ledger(p),S=D.settings,
+    paidM=L.months.filter(m=>L.M[m]),ahead=paidM.filter(m=>m>CUR),single=L.out.filter(x=>/разовая\)/.test(x.t)),rent=L.out.filter(x=>/^Аренда/.test(x.t)),sum=a=>money(-a.reduce((t,x)=>t+x.a,0));
+    const row=(t,v,c)=>`<div class="row" style="justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line)"><span>${t}</span><b class="${c||''}">${v}</b></div>`;
+    modal(`<h2>${esc(pname(p))}</h2><p style="margin-top:4px">${badge(p.type)} ${sqBadge(p.squad||'1')}</p>
+    <h3 style="margin-top:16px">Начислено всего — ${money(L.charged)}</h3>
+    ${L.months.length?row(`Абонемент: ${L.months.length} ${plural(L.months.length,'месяц','месяца','месяцев')} × ${money(S.sub)}<br><span class="mut" style="font-size:13px">оплачено: ${paidM.length?mList(paidM):'—'}${ahead.length?` (вперёд — ${ahead.length})`:''}</span>${L.unpaid.length?`<br><span class="bad" style="font-size:13px">не оплачено: ${mList(L.unpaid)}</span>`:''}`,money(L.months.length*S.sub)):''}
+    ${single.length?row(`Разовые тренировки: ${single.length} × ${money(S.single)}<br><span class="mut" style="font-size:13px">оплачены: ${L.singles.filter(x=>x.pay).map(x=>dShort(x.e.date)).join(', ')||'—'}</span>${L.unpaidTr.length?`<br><span class="bad" style="font-size:13px">не оплачены: ${L.unpaidTr.map(e=>dShort(e.date)).join(', ')}</span>`:''}`,sum(single)):''}
+    ${rent.length?row(`Аренда экипировки: ${rent.length}`,sum(rent)):''}
+    <h3 style="margin-top:16px">Внесено всего — ${money(L.paid)} <button class="btn sec sm" style="margin-left:6px" data-act="payHist" data-id="${p.id}">Подробно по платежам</button></h3>
+    ${D.payments.filter(x=>x.pid===p.id).sort((a,b)=>b.date.localeCompare(a.date)).map(x=>row(`${fdate(x.date)} — ${x.kind==='sub'&&x.months?'абонемент за '+x.months.map(mShort).join(', '):'разовые / доплата'}${x.note?' · '+esc(x.note):''}`,money(x.amount),'ok')).join('')||'<p class="note">Оплат нет</p>'}
+    <h3 style="margin-top:16px">Баланс: <span class="${L.bal<0?'bad':'ok'}">${money(L.bal)}</span></h3>
+    <p class="note">${L.bal<0?(L.unpaid.length?`Долг — неоплаченные месяцы абонемента, в которые игрок тренировался: ${mList(L.unpaid)}.`:'Долг — разовые тренировки или аренда.'):L.bal>0?'Переплата — учтётся в следующих платежах.':'Всё оплачено.'}</p>`)}
+  else if(a==='payHist'){if(!U||U.role!=='admin')return;openPayHist(id,null)}
+  else if(a==='phEdit'){if(U&&U.role==='admin')openPayHist(b.dataset.p,id)}
+  else if(a==='phNew'){if(U&&U.role==='admin')openPayHist(id,'new')}
+  else if(a==='phCancel'){openPayHist(id,null)}
+  else if(a==='phDel'){if(!U||U.role!=='admin')return;const x=D.payments.find(y=>y.id===id);if(!x||!confirm('Удалить платёж '+money(x.amount)+' от '+fbirth(x.date)+'?'))return;
+    const pl=player(b.dataset.p),before=paySnap(pl,null);D.payments=D.payments.filter(y=>y.id!==id);phMsg='Платёж удалён.<br>'+snapDiff(before,paySnap(pl,null),null);save();render();openPayHist(b.dataset.p,null);toast('Платёж удалён')}
+  else if(a==='tourNhl'){document.querySelectorAll('#tourForm input[name^="doc_"]').forEach(cb=>{const d=DOCT[cb.name.slice(4)];if(d&&d.nhl)cb.checked=true});toast('Отмечены документы по регламенту НХЛ, свои остались — нажмите «Сохранить»')}
+  else if(a==='dtEdit'){dtEdit=id;render();const el=$('dtForm');if(el)el.scrollIntoView({behavior:'smooth',block:'center'})}
+  else if(a==='dtCancel'){dtEdit=null;render()}
+  else if(a==='dtDel'){const d=DOCT[id];if(!d)return;const used=D.tours.filter(t=>t.docs.includes(id)).length;
+    if(!confirm('Удалить «'+d.t+'» из справочника?'+(used?' Он уберётся из требований турниров ('+used+'), сданные по нему файлы удалятся.':'')))return;
+    D.doctypes=D.doctypes.filter(x=>x.id!==id);D.tours.forEach(t=>{t.docs=t.docs.filter(k=>k!==id)});Object.values(D.tdocs).forEach(a=>Object.values(a).forEach(b=>{delete b[id]}));
+    if(dtEdit===id)dtEdit=null;syncDocT();save();toast('Документ удалён из справочника');render()}
+  else if(a==='tourNew'){tourSel='new';tourEdit=false;render()}
+  else if(a==='tourEdit'){tourEdit=true;render()}
+  else if(a==='tourCancel'){if(tourSel==='new')tourSel=null;tourEdit=false;render()}
+  else if(a==='tourDel'){const t=D.tours.find(x=>x.id===tourSel);if(!t||!confirm('Удалить турнир «'+t.name+'»? Отметки об участии и документы по нему удалятся, игры останутся обычными.'))return;
+    D.tours=D.tours.filter(x=>x!==t);D.events.forEach(e=>{if(e.tid===t.id)e.tid=''});delete D.tpart[t.id];delete D.tdocs[t.id];tourSel=null;tourEdit=false;save();toast('Турнир удалён');render()}
+  else if(a==='docView'){if(!isStaff())return;const p=player(id),k=b.dataset.k,t=D.tours.find(x=>x.id===tourSel),d=docOf(t,p.id,k),s=docSt(t,p.id,k);
+    modal(`<h2>${esc(DOCT[k].t)}</h2><p style="margin-top:4px">${esc(pname(p))} · <span class="nk ${DSTX[s][1]}">${DSTX[s][0]}</span></p>
+    ${d&&d.file?(d.file.startsWith('data:application/pdf')?`<p style="margin-top:12px"><a class="btn sec sm" href="${d.file}" download="${esc(d.name||'document.pdf')}">Открыть PDF</a></p>`:`<a href="${d.file}" download="${esc(p.last)}-${k}.jpg" title="Скачать"><img src="${d.file}" alt="${esc(DOCT[k].t)}" style="display:block;width:100%;margin-top:12px;border-radius:10px;border:1px solid var(--line)"></a>`):`<p class="note">${s==='paper'?'Игрок отметил, что принесёт документ лично.':'Скан не загружен.'}</p>`}
+    ${d&&d.date?`<p class="note">Загружено ${fdate(d.date)}${d.name?' · '+esc(d.name):''}</p>`:''}
+    <form class="form" id="docForm" data-pid="${p.id}" data-k="${k}" style="margin-top:12px;grid-template-columns:1fr 1fr">
+    ${DOCT[k].exp?`<label class="w4">Действует до<input type="date" name="until" value="${d?esc(d.until||''):''}"></label>`:''}
+    <label class="w4">Причина отказа (если отклоняете)<input name="note" value="${d?esc(d.note||''):''}" placeholder="Нечитаемо, просрочена, нет печати…"></label>
+    <button class="btn" type="submit" value="ok">${d&&d.file?'Принять':'Принято на бумаге'}</button><button class="btn del" type="submit" value="bad">Отклонить</button></form>`)}
+  else if(a==='pnDel'||a==='pnDone'||a==='pnVis'){const N=D.notes[pnP]||[],n=N.find(x=>x.id===id);if(!n)return;
+    if(a==='pnDel'){if(!confirm('Удалить заметку?'))return;D.notes[pnP]=N.filter(x=>x!==n)}else if(a==='pnDone')n.done=!n.done;else n.vis=n.vis==='coach'?'player':'coach';
+    save();if(a==='pnVis')toast(n.vis==='player'?'Игрок увидит заметку в кабинете':'Заметка скрыта от игрока');render()}
+  else if(a==='planPub'||a==='afterPub'){const P=plan(planEv),k=a==='planPub'?'pub':'afterPub';P[k]=!P[k];save();toast(P[k]?'Видно команде — в окне события после входа':'Скрыто от команды');render()}
+  else if(a==='drDel'){const P=plan(planEv);P.drills=P.drills.filter(x=>x.id!==id);save();render()}
+  else if(a==='drLib'){const d=plan(planEv).drills.find(x=>x.id===id);if(!d)return;if(D.drillLib.some(x=>x.text===d.text)){toast('Уже есть в шаблонах');return}D.drillLib.push({text:d.text,min:d.min});save();toast('Сохранено в шаблоны');render()}
+  else if(a==='afDel'){const P=plan(planEv);P.after=P.after.filter(x=>x.id!==id);save();render()}
+  else if(a==='afMove'){const e=D.events.find(x=>x.id===planEv),nt=nextTraining(e),x=plan(planEv).after.find(y=>y.id===id);if(!x)return;
+    if(!nt){toast('Нет ближайшей тренировки — добавьте её в «События»');return}
+    plan(nt.id).drills.push({id:uid(),text:x.text,min:10});x.moved=true;save();toast('Добавлено в план тренировки '+fdate(nt.date));render()}
+  else if(a==='event'){const e=D.events.find(x=>x.id===id);if(!e)return;const n=(D.att[e.id]||[]).length;
+    modal(`<div class="row">${evPill(e)}${sqBadge(sqOf(e))}</div><h2 style="margin:10px 0 4px">${evTitle(e)}</h2><p>${fdate(e.date)}, ${fdow(e.date)} · ${esc(e.time)}</p><p>${esc(e.place)}</p>${e.score?`<div class="big" style="margin-top:12px">${esc(e.score)}</div>`:''}${e.date<=TODAY&&n?`<p class="note">Было: ${n} чел.</p>`:''}${e.date>=TODAY?(()=>{const R=Object.values(D.rsvp[e.id]||{});return `<p class="note">Собираются: <b class="ok">${R.filter(x=>x==='yes').length}</b> · под вопросом: ${R.filter(x=>x==='maybe').length}</p>`})():''}${lineupView(e)}${planView(e)}${tourOf(e)?`<p class="note" style="font-weight:700">🏆 ${esc(tourOf(e).name)}${myPid()&&gameOk(player(myPid()))?(admitted(tourOf(e),myPid())?' · <span class="ok">✓ вы допущены</span>':' · <span class="bad">нет допуска — отметьте участие и сдайте документы в кабинете</span>'):''}</p>`:''}${e.date>=TODAY&&myPid()&&forSquad(e,(player(myPid())||{}).squad||'1')?`<p style="margin-top:12px;color:var(--ink);font-weight:700">Вы будете?</p>${rsvpBtns(e,myPid())}${myPlace(e,myPid())?`<div class="place">${esc(myPlace(e,myPid()))}</div>`:''}`:''}`)}
+  else if(a==='calsq'){calSq=id;render()}
+  else if(a==='rsvp'){if(!myPid())return;{const e0=D.events.find(x=>x.id===id);if(e0&&e0.type==='game'&&!(gameOk(player(myPid()))&&tourOk(e0,myPid())))return}(D.rsvp[id]=D.rsvp[id]||{})[myPid()]=b.dataset.v;const LU=D.lineup[id]||{},SL=LU.slots;if(b.dataset.v!=='yes'){if(SL)Object.keys(SL).forEach(k=>{if(SL[k]===myPid())delete SL[k]});if(LU.teams)delete LU.teams[myPid()]}save();toast('Отмечено: '+RSVP[b.dataset.v]);
+    if($('modal').classList.contains('on')){closeModal()}render()}
+  else if(a==='lineAuto'){autoLine(lineEv);save();const L=D.lineup[lineEv],n=Object.keys(L.slots||L.teams||{}).length,e=D.events.find(x=>x.id===lineEv),none=invited(e).filter(p=>!rsvpOf(e.id,p.id)).length;
+    toast(n?'Расставлено: '+n+(none?' · не ответили: '+none:''):'Никто ещё не отметился «Буду» — расставьте вручную');render()}
+  else if(a==='lineClear'){delete D.lineup[lineEv];save();render()}
+  else if(a==='linePub'){const L=D.lineup[lineEv]=D.lineup[lineEv]||{};L.pub=!L.pub;save();toast(L.pub?'Состав опубликован — игроки видят своё место':'Публикация снята');render()}
+  else if(a==='joinAgain'){joinDone=false;render()}
+  else if(a==='rqDel'){if(confirm('Удалить заявку?')){D.requests=D.requests.filter(r=>r.id!==id);save();render()}}
+  else if(a==='rqToPl'){const r=D.requests.find(x=>x.id===id),[last,...rest]=r.name.trim().split(/\s+/);
+    D.players.push({id:uid(),last:last||r.name,first:rest[0]||'',mid:rest.slice(1).join(' '),num:'',pos:'F',type:'single',gear:!!r.gear,squad:'2',phone:r.phone});
+    r.status='player';save();toast('Добавлен в игроки — 2-й состав, проверьте амплуа, номер можно присвоить позже');adminTab='pl';render()}
+  else if(a==='calprev'){calM=addM(calM,-1);render()}
+  else if(a==='calnext'){calM=addM(calM,1);render()}
+  else if(a==='login'){modal(`<h2>Вход</h2><form class="form" id="loginForm" style="grid-template-columns:1fr;margin-top:6px">
+    <label>Телефон<input name="phone" type="tel" autocomplete="tel" placeholder="+7 ___ ___-__-__" required></label>
+    <label>Пароль<input name="pw" type="password" autocomplete="current-password" required></label>
+    <p class="bad" id="loginErr" style="display:none;font-size:14px">Неверный телефон или пароль</p>
+    <button class="btn" type="submit">Войти</button></form>
+    <p class="note">Первый вход — по ссылке-приглашению от капитана: по ней Вы сами зададите пароль. Забыли пароль — капитан пришлёт новую ссылку.</p>
+    <p class="note"><b>В демо:</b> капитан — +7 900 000-00-00, пароль 0000; тренер — +7 900 000-00-50, пароль 2222; игроки — +7 900 000-00-01 … 12, пароль 1111. Кто задал свой пароль по приглашению — входит со своим. Или быстрый вход:</p>
+    <button class="pick" data-act="as" data-id="admin"><b>Капитан</b> <span class="mut">— администратор</span></button>${D.coaches.slice(0,1).map(c=>`<button class="pick" data-act="as" data-id="coach:${c.id}"><b>Тренер</b> <span class="mut">— ${esc(c.last+' '+c.first)}</span></button>`).join('')}${D.players.slice(0,3).map(p=>`<button class="pick" data-act="as" data-id="${p.id}">${esc(pname(p))} <span class="mut">${esc(p.phone||'')}</span></button>`).join('')}`)}
+  else if(a==='invite'){if(U&&U.role==='admin')inviteModal('pid',id)}
+  else if(a==='as'){const isC=id.startsWith('coach:');setUser(id==='admin'?{role:'admin'}:isC?{role:'coach',cid:id.slice(6)}:{role:'player',pid:id});closeModal();location.hash=id==='admin'||isC?'#admin':'#cabinet';render()}
+  else if(a==='plEdit'){plEdit=id;render();scrollTo({top:0,behavior:'smooth'})}
+  else if(a==='plCancel'){plEdit=null;render()}
+  else if(a==='coInv'){if(U&&U.role==='admin')inviteModal('cid',id)}
+  else if(a==='invCopy'){const t=$('invLink').textContent;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('Ссылка скопирована')).catch(()=>{const r=document.createRange();r.selectNodeContents($('invLink'));const sel=getSelection();sel.removeAllRanges();sel.addRange(r);toast('Выделено — нажмите Ctrl+C')})}
+  else if(a==='coDel'){if(confirm('Удалить тренера?')){D.coaches=D.coaches.filter(c=>c.id!==id);save();render()}}
+  else if(a==='logout'){setUser(null);location.hash='#home';render()}
+  else if(a==='tab'){adminTab=id;evEdit=null;plEdit=null;render()}
+  else if(a==='attAll'){document.querySelectorAll('.attCb').forEach(c=>c.checked=true);$('attCnt').textContent=D.players.length}
+  else if(a==='attSave'){D.att[attEv]=[...document.querySelectorAll('.attCb:checked')].map(c=>c.value);const rc=[...document.querySelectorAll('.rentCb:checked')].map(c=>c.value).filter(id=>D.att[attEv].includes(id));if(document.querySelector('.rentCb'))D.rentAtt[attEv]=rc;save();toast('Посещения сохранены'+(rc.length?' · аренда: '+rc.length:''));render()}
+  else if(a==='payDel'){if(confirm('Удалить эту оплату?')){D.payments=D.payments.filter(x=>x.id!==id);if(payEdit===id)payEdit=null;save();render()}}
+  else if(a==='payEdit'){payEdit=id;render();scrollTo({top:0,behavior:'smooth'})}
+  else if(a==='payCancel'){payEdit=null;render()}
+  else if(a==='evEdit'){evEdit=id;render();scrollTo({top:0,behavior:'smooth'})}
+  else if(a==='evCancel'){evEdit=null;render()}
+  else if(a==='evDel'){if(confirm('Удалить событие? Отметки посещений по нему тоже удалятся.')){D.events=D.events.filter(x=>x.id!==id);delete D.att[id];save();render()}}
+  else if(a==='plDel'){if(confirm('Удалить игрока и его оплаты?')){D.players=D.players.filter(p=>p.id!==id);D.payments=D.payments.filter(x=>x.pid!==id);Object.keys(D.att).forEach(k=>D.att[k]=D.att[k].filter(x=>x!==id));save();render()}}
+  else if(a==='csv'){const rows=[['Фамилия','Имя','Отчество','Состав','Тип','Тренировок','Начислено','Внесено','Баланс','Абонемент']].concat(balances().map(({p,L})=>[p.last,p.first,p.mid||'',(p.squad||'1')+'-й',TYPES[p.type],L.trCount,L.charged,L.paid,L.bal,L.sub?subText(L):'']));
+    const blob=new Blob(['﻿'+rows.map(r=>r.join(';')).join('\n')],{type:'text/csv;charset=utf-8'});const u=URL.createObjectURL(blob),l=document.createElement('a');l.href=u;l.download='sparta-balansy-'+TODAY+'.csv';l.click();URL.revokeObjectURL(u)}
+  else if(a==='reset'){if(confirm('Сбросить все демо-данные?')){D=seed();save();toast('Демо-данные сброшены');render()}}
+});
+document.addEventListener('change',ev=>{
+  const t=ev.target;
+  if(t.id==='attSel'){attEv=t.value;render()}
+  else if(t.id==='planSel'){planEv=t.value;render()}
+  else if(t.id==='payFP'){payF.pid=t.value;render()}
+  else if(t.id==='payFM'){payF.m=t.value;render()}
+  else if(t.id==='tourSel'){tourSel=t.value;tourEdit=false;render()}
+  else if(t.classList.contains('tpSel')){const a=D.tpart[tourSel]=D.tpart[tourSel]||{};if(t.value)a[t.dataset.pid]=t.value;else delete a[t.dataset.pid];save();render()}
+  else if(t.classList.contains('docUp')&&t.files[0]){if(!myPid())return;const f=t.files[0],k=t.dataset.k,tr=D.tours.find(x=>x.id===t.dataset.t),u=$('du_'+t.dataset.t+'_'+k);if(!tr)return;
+    if(DOCT[k].exp&&!(u&&u.value)){toast('Сначала укажите, до какой даты действует документ');t.value='';return}
+    readDoc(f).then(file=>{const box=dbox(tr,myPid()),old=box[k];
+      box[k]={file,name:f.name,date:TODAY,until:u?u.value:'',status:'sent',note:''};
+      if(!save()){if(old)box[k]=old;else delete box[k];toast('Не хватило места в демо — загрузите фото поменьше');return}
+      toast('Документ отправлен на проверку');render()}).catch(m=>{t.value='';toast(String(m))})}
+  else if(t.id==='drLibSel'&&t.value!==''){const d=D.drillLib[+t.value];plan(planEv).drills.push({id:uid(),text:d.text,min:d.min});save();render()}
+  else if(t.classList.contains('attCb'))$('attCnt').textContent=document.querySelectorAll('.attCb:checked').length;
+  else if(t.id==='repSel'){repM=t.value;render()}
+  else if(t.classList.contains('plType')){const p=player(t.dataset.id);p.type=t.value;save();toast('Тип участия изменён')}
+  else if(t.id==='lineSel'){lineEv=t.value;render()}
+  else if(t.classList.contains('slotSel')){const L=D.lineup[lineEv]=D.lineup[lineEv]||{};L.slots=L.slots||{};
+    if(t.value)Object.keys(L.slots).forEach(k=>{if(L.slots[k]===t.value)delete L.slots[k]});
+    if(t.value)L.slots[t.dataset.slot]=t.value;else delete L.slots[t.dataset.slot];save();render()}
+  else if(t.classList.contains('tsel')){const L=D.lineup[lineEv]=D.lineup[lineEv]||{};L.teams=L.teams||{};
+    if(t.value)L.teams[t.dataset.pid]=t.value;else delete L.teams[t.dataset.pid];save();render()}
+  else if(t.classList.contains('rqSt')){D.requests.find(r=>r.id===t.dataset.id).status=t.value;save();render()}
+  else if(t.classList.contains('plSq')){const p=player(t.dataset.id);p.squad=t.value;save();toast('Игрок переведён в '+SQ[t.value])}
+  else if(t.name&&/^[mt]_/.test(t.name)&&t.form){t.closest('label').classList.toggle('on',t.checked);payFormSync(t.form,true)}
+  else if(t.form&&t.form.id==='payForm'&&['pid','kind','date','amount'].includes(t.name)){const f=t.form,pl=player(f.pid.value);
+    if(t.name==='pid')f.kind.value=f.pid.selectedOptions[0].dataset.t==='sub'?'sub':'single';
+    if(t.name==='pid'||t.name==='kind'){$('payMonths').outerHTML=monthsBox(pl,f.kind.value==='sub'?suggestMonths(pl,1):[],payEdit,'payMonths',f.kind.value==='sub');
+      $('payTrs').outerHTML=trBox(pl,f.kind.value==='single'?suggestTrs(pl):[],payEdit,'payTrs',f.kind.value==='single')}
+    if(t.name==='kind'||t.name==='pid'){f.dataset.keep=t.name==='kind'&&f.kind.value==='single'?'1':'';f.dataset.auto=''}
+    if(t.name==='amount'&&autoSub(f))return;
+    payFormSync(f,t.name==='pid'||t.name==='kind')}
+  else if(t.form&&t.form.id==='phForm'&&['kind','amount'].includes(t.name)){const f=t.form;if(t.name==='kind'){f.dataset.keep=f.kind.value==='single'?'1':'';f.dataset.auto=''}
+    if(t.name==='amount'&&autoSub(f))return;payFormSync(f,t.name==='kind')}
+});
+document.addEventListener('submit',ev=>{
+  const f=ev.target;ev.preventDefault();const v=Object.fromEntries(new FormData(f));
+  if(f.id==='docForm'){if(!isStaff())return;const st=ev.submitter&&ev.submitter.value,pid=f.dataset.pid,k=f.dataset.k,t=D.tours.find(x=>x.id===tourSel);if(!t)return;
+    if(st==='bad'&&!v.note.trim()){toast('Напишите причину отказа — игрок её увидит');return}
+    if(st==='ok'&&DOCT[k].exp&&!v.until){toast('Укажите, до какой даты действует документ');return}
+    const box=dbox(t,pid),d=box[k]=box[k]||{file:'',name:'',date:TODAY,until:'',note:''};d.status=st;d.note=st==='bad'?v.note.trim():'';if('until' in v)d.until=v.until;
+    save();closeModal();toast(st==='ok'?(admitted(t,pid)?'Принято — игрок допущен к турниру':'Документ принят'):'Отклонено — игрок увидит причину');render();return}
+  if(f.id==='invForm'){const iv=D.invites[f.dataset.code],x=iv&&whoOf(iv),err=$('invErr');if(!x){render();return}
+    if(v.pw.length<6){err.textContent='Пароль — не меньше 6 символов';err.style.display='block';return}
+    if(v.pw!==v.pw2){err.textContent='Пароли не совпадают';err.style.display='block';return}
+    x.pwh=pwHash(v.pw);delete D.invites[f.dataset.code];save();
+    setUser(iv.pid?(x.cap==='C'?{role:'admin'}:{role:'player',pid:iv.pid}):{role:'coach',cid:iv.cid});toast('Пароль сохранён — добро пожаловать!');location.hash=iv.pid?'#cabinet':'#admin';return}
+  if(f.id==='dtForm'){if(!isStaff())return;const name=v.t.trim(),url=v.url.trim();if(!name){toast('Укажите название');return}
+    if(url&&!/^https?:\/\/\S+$/i.test(url)){toast('Ссылка должна начинаться с https://');return}
+    let d=f.dataset.id?DOCT[f.dataset.id]:null;if(!d&&D.doctypes.some(x=>x.t.toLowerCase()===name.toLowerCase())){toast('Такой документ уже есть в справочнике');return}
+    if(!d){d={id:'c'+uid()};D.doctypes.push(d)}
+    Object.assign(d,{t:name,hint:v.hint.trim(),url,exp:!!v.exp,paper:!!v.paper});
+    const t=v.addTour&&tourSel&&tourSel!=='new'?D.tours.find(x=>x.id===tourSel):null;if(t&&!t.docs.includes(d.id))t.docs.push(d.id);
+    dtEdit=null;syncDocT();save();toast(f.dataset.id?'Сохранено':t?'Документ добавлен и требуется в турнире':'Документ добавлен в справочник');render();return}
+  if(f.id==='tourForm'){const docs=Object.keys(DOCT).filter(k=>v['doc_'+k]);if(!v.name.trim()){toast('Укажите название турнира');return}if(!docs.length){toast('Отметьте хотя бы один документ');return}
+    let t=tourSel&&tourSel!=='new'?D.tours.find(x=>x.id===tourSel):null;if(!t){t={id:uid()};D.tours.push(t)}
+    Object.assign(t,{name:v.name.trim(),squad:v.squad,due:v.due||'',fee:+v.fee||0,docs});
+    D.events.forEach(e=>{if(e.type!=='game')return;if(v['g_'+e.id])e.tid=t.id;else if(e.tid===t.id)e.tid=''});
+    tourSel=t.id;tourEdit=false;save();toast('Турнир сохранён');render();return}
+  if(f.id==='pnForm'){if(!v.text.trim())return;(D.notes[pnP]=D.notes[pnP]||[]).push({id:uid(),date:TODAY,kind:v.kind,vis:v.vis,text:v.text.trim(),done:false});save();toast(v.vis==='player'?'Заметка добавлена — игрок её увидит':'Заметка добавлена');render();return}
+  if(f.id==='drForm'){if(!v.text.trim())return;plan(planEv).drills.push({id:uid(),text:v.text.trim(),min:+v.min||0});save();render();return}
+  if(f.id==='tacForm'){const P=plan(planEv);P.opp=v.opp.trim();P.tactic=v.tactic.trim();LINES.forEach(n=>P.lines[n]=(v['l'+n]||'').trim());save();toast('Тактика сохранена');render();return}
+  if(f.id==='afForm'){if(!v.text.trim())return;plan(planEv).after.push({id:uid(),kind:v.kind,text:v.text.trim(),moved:false});save();render();return}
+  if(f.id==='joinForm'){const err=$('joinErr'), ph=v.phone.replace(/\D/g,'');
+    if(v.name.trim().length<3){err.textContent='Укажите фамилию и имя';err.style.display='block';return}
+    if(ph.length<10){err.textContent='Проверьте номер телефона';err.style.display='block';return}
+    if(!v.consent){err.textContent='Нужно согласие на обработку данных';err.style.display='block';return}
+    D.requests.push({id:uid(),date:TODAY,name:v.name.trim(),phone:v.phone.trim(),age:v.age,level:v.level,gear:!!v.gear,ev:v.ev,note:v.note.trim(),status:'new'});
+    save();joinDone=true;render();scrollTo(0,0);return}
+  if(f.id==='loginForm'){const ph=v.phone.replace(/\D/g,'').replace(/^8/,'7');
+    if(ph==='79000000000'&&v.pw==='0000'){setUser({role:'admin'});closeModal();location.hash='#admin';render();return}
+    const c=D.coaches.find(x=>(x.phone||'').replace(/\D/g,'')===ph);
+    if(c&&(c.pwh?pwHash(v.pw)===c.pwh:v.pw==='2222')){setUser({role:'coach',cid:c.id});closeModal();location.hash='#admin';render();return}
+    const p=D.players.find(x=>(x.phone||'').replace(/\D/g,'')===ph);
+    if(p&&(p.pwh?pwHash(v.pw)===p.pwh:v.pw==='1111')){setUser(p.cap==='C'?{role:'admin'}:{role:'player',pid:p.id});closeModal();location.hash=p.cap==='C'?'#admin':'#cabinet';render();return}
+    $('loginErr').style.display='block';return}
+  if(f.id==='phForm'){if(!U||U.role!=='admin')return;if(autoSub(f)){toast('Сумма — как абонемент: проверьте месяц и нажмите ещё раз');return}const ms=Object.keys(v).filter(k=>k.startsWith('m_')).map(k=>k.slice(2)).sort(),ts=Object.keys(v).filter(k=>k.startsWith('t_')).map(k=>k.slice(2));if(v.kind==='single'&&!ts.length){toast('Отметьте, за какие тренировки оплата');return}
+    const d={pid:f.dataset.pid,date:v.date,amount:Math.round(+v.amount),kind:v.kind,note:v.note.trim(),months:v.kind==='sub'?ms:undefined,trs:v.kind==='single'?ts:undefined};
+    if(!(d.amount>0)){toast('Укажите сумму');return}if(d.kind==='sub'&&!ms.length){toast('Отметьте, за какие месяцы оплата');return}
+    const pl=player(d.pid);let x=f.dataset.id&&D.payments.find(y=>y.id===f.dataset.id);const before=paySnap(pl,x&&x.id);
+    if(x)Object.assign(x,d);else{x={id:uid(),...d};D.payments.push(x)}if(!x.months)delete x.months;if(!x.trs)delete x.trs;
+    phMsg=snapDiff(before,paySnap(pl,x.id),x);toast(f.dataset.id?'Платёж исправлен':'Платёж добавлен');
+    save();render();openPayHist(d.pid,null);return}
+  if(f.id==='payForm'){if(autoSub(f)){toast('Сумма — как абонемент: проверьте месяц и нажмите ещё раз');return}const ms=Object.keys(v).filter(k=>k.startsWith('m_')).map(k=>k.slice(2)).sort(),ts=Object.keys(v).filter(k=>k.startsWith('t_')).map(k=>k.slice(2));if(v.kind==='single'&&!ts.length){toast('Отметьте, за какие тренировки оплата');return}if(v.kind==='sub'&&!ms.length){toast('Отметьте, за какие месяцы оплата');return}
+    const d={pid:v.pid,date:v.date,amount:Math.round(+v.amount),kind:v.kind,note:v.note.trim(),months:v.kind==='sub'?ms:undefined,trs:v.kind==='single'?ts:undefined};const e=payEdit&&D.payments.find(x=>x.id===payEdit);
+    if(e){const pl=player(d.pid),b0=paySnap(pl,e.id);Object.assign(e,d);if(!e.months)delete e.months;if(!e.trs)delete e.trs;payEdit=null;phMsg=snapDiff(b0,paySnap(pl,e.id),e);save();render();openPayHist(d.pid,null);toast('Оплата исправлена');return}
+    const x={id:uid(),...d};if(!x.months)delete x.months;if(!x.trs)delete x.trs;D.payments.push(x);toast('Оплата записана'+(x.months?' — за '+mList(x.months):''));save();render()}
+  else if(f.id==='evForm'){const e={type:v.type,squad:v.squad,date:v.date,time:v.time,place:v.place.trim(),opp:v.opp.trim(),score:v.score.trim()};
+    if(e.type==='game'&&!e.opp){alert('Укажите соперника');return}
+    e.tid=e.type==='game'&&v.tid?v.tid:'';
+    if(evEdit)Object.assign(D.events.find(x=>x.id===evEdit),e);else D.events.push({id:uid(),...e});
+    evEdit=null;save();toast('Событие сохранено');render()}
+  else if(f.id==='coForm'){D.coaches.push({id:uid(),last:v.last.trim(),first:v.first.trim(),mid:v.mid.trim(),role:v.role.trim(),squad:v.squad,phone:v.phone.trim(),about:v.about.trim()});save();toast('Тренер добавлен');render()}
+  else if(f.id==='plForm'){const d={last:v.last.trim(),first:v.first.trim(),mid:v.mid.trim(),num:v.num===''?'':+v.num,pos:v.pos,type:v.type,squad:v.squad,phone:v.phone.trim(),
+      birth:v.birth,height:v.height?+v.height:'',weight:v.weight?+v.weight:'',cap:v.cap||'',gear:!!v.gear};
+    if(d.cap==='C')D.players.forEach(x=>{if(x.cap==='C'&&x.id!==plEdit)x.cap=''});   // капитан один
+    if(plEdit){Object.assign(player(plEdit),d);plEdit=null;toast('Данные игрока сохранены')}else{D.players.push({id:uid(),...d});toast('Игрок добавлен')}save();render()}
+  else if(f.id==='meForm'){const p=player(myPid());p.birth=v.birth;p.height=v.height?+v.height:'';p.weight=v.weight?+v.weight:'';save();toast('Данные сохранены');render()}
+  else if(f.id==='setForm'){D.settings={...D.settings,single:+v.single,sub:+v.sub,rent:+v.rent};save();toast('Настройки сохранены');render()}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+addEventListener('hashchange',()=>{closeModal();render();scrollTo(0,0)});
+render();
+</script>
+</body></html>
