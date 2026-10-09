@@ -641,7 +641,17 @@ function tBal(){
   <div class="row" style="margin-top:14px"><button class="btn sec sm" data-act="csv">Выгрузить в Excel (CSV)</button></div>`;
 }
 let evEdit=null;
-function tEv(){
+// Серии: будущие события одного типа, дня недели, времени и состава
+const DOWN=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+function seriesGroups(){const g={};D.events.filter(e=>e.date>=TODAY).forEach(e=>{const k=[e.type,dobj(e.date).getDay(),e.time,sqOf(e)].join('|');(g[k]=g[k]||[]).push(e)});
+  return Object.values(g).filter(a=>a.length>=2).map(a=>a.sort((x,y)=>x.date.localeCompare(y.date))).sort((a,b)=>dobj(a[0].date).getDay()-dobj(b[0].date).getDay()||a[0].time.localeCompare(b[0].time))}
+function seriesCard(){const G=seriesGroups();if(!G.length)return '';
+  return `<div class="card" style="margin-top:16px"><h3>Серии</h3><p class="note" style="margin-top:2px">Повторяющиеся будущие события. Меняются и удаляются разом; прошедшие не трогаются — на них посещения и начисления.</p>
+  <div class="tw" style="margin-top:12px"><table><tr><th>Серия</th><th>Сколько</th><th>Новое время</th><th></th></tr>${G.map((a,i)=>{const e=a[0];return `<tr><td><b>${e.type==='game'?'Игры':'Тренировки'}: ${DOWN[dobj(e.date).getDay()]}, ${esc(e.time)}</b><br><span class="mut" style="font-size:13px">${SQ[sqOf(e)]} · ${fdate(e.date)} — ${fdate(a[a.length-1].date)}</span></td><td>${a.length}</td>
+    <td><input type="time" id="serT${i}" value="${esc(e.time)}" style="background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px;font:inherit"></td>
+    <td style="white-space:nowrap"><button class="btn sec sm" data-act="serTime" data-id="${i}">Изменить время</button> <button class="btn del sm" data-act="serDel" data-id="${i}">Удалить серию</button></td></tr>`}).join('')}</table></div></div>`}
+function tEv(){const h=tEvMain(),k='<div class="card" style="margin-top:16px"><h3>Все события</h3>',i=h.indexOf(k);return i<0?h+seriesCard():h.slice(0,i)+seriesCard()+h.slice(i)}   // серии — между формой и списком
+function tEvMain(){
   const e=evEdit?D.events.find(x=>x.id===evEdit):null;
   return `<div class="card"><h3>${e?'Изменить событие':'Добавить событие'}</h3><form class="form" id="evForm" style="margin-top:12px">
   <label>Тип<select name="type"><option value="training"${e&&e.type==='training'?' selected':''}>Тренировка</option><option value="game"${e&&e.type==='game'?' selected':''}>Игра</option></select></label>
@@ -929,6 +939,16 @@ document.addEventListener('click',ev=>{
   const a=b.dataset.act,id=b.dataset.id;
   if(a==='close')closeModal();
   else if(a==='pnSel'){pnP=id;render()}
+  else if(a==='serDel'||a==='serTime'){if(!isStaff())return;const ser=seriesGroups()[+id];if(!ser)return;const e0=ser[0],nm=`${e0.type==='game'?'игр':'тренировок'} по ${['воскресеньям','понедельникам','вторникам','средам','четвергам','пятницам','субботам'][dobj(e0.date).getDay()]} в ${e0.time}`;
+    const drop=e=>{D.events=D.events.filter(x=>x!==e);delete D.rsvp[e.id];delete D.lineup[e.id];if(D.plans)delete D.plans[e.id]};
+    if(a==='serDel'){if(!confirm(`Удалить ${ser.length} ${nm}? Отметки «Буду», составы и планы по ним тоже удалятся.`))return;ser.forEach(drop);save();toast(`Удалено: ${ser.length} ${nm}`);render();return}
+    const t=$('serT'+id).value;if(!t||t===e0.time){toast('Выберите новое время');return}
+    let moved=0,merged=0;
+    ser.forEach(e=>{const tw=D.events.find(x=>x!==e&&x.type===e.type&&x.date===e.date&&x.time===t&&sqOf(x)===sqOf(e));
+      if(tw){const r=D.rsvp[e.id]||{},rt=D.rsvp[tw.id]=D.rsvp[tw.id]||{};Object.keys(r).forEach(p=>{if(!rt[p])rt[p]=r[p]});   // отметки переносим на совпавшую
+        if(D.lineup[e.id]&&!D.lineup[tw.id])D.lineup[tw.id]=D.lineup[e.id];if(D.plans&&D.plans[e.id]&&!D.plans[tw.id])D.plans[tw.id]=D.plans[e.id];drop(e);merged++}
+      else{e.time=t;moved++}});
+    save();toast(`${nm}: перенесено на ${t} — ${moved}`+(merged?`, совпали с уже стоящими и объединены — ${merged}`:''));render()}
   else if(a==='toDocs'){const el=$('docs-box');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
   else if(a==='tPart'){if(!myPid())return;(D.tpart[id]=D.tpart[id]||{})[myPid()]=b.dataset.v;save();toast(b.dataset.v==='yes'?'Вы в списке участников — сдайте документы':'Отмечено: не участвуете');render()}
   else if(a==='docPaper'){if(!myPid())return;const t=D.tours.find(x=>x.id===b.dataset.t);if(!t)return;
